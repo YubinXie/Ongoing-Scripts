@@ -1,0 +1,877 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"g",
+				"GroupName"
+			],
+			[
+				"Ou",
+				"OutputContent"
+			],
+			[
+				"Outpu",
+				"OutputLineNumber"
+			],
+			[
+				"out",
+				"outputfile"
+			],
+			[
+				"File1",
+				"File1_Sheet"
+			],
+			[
+				"File",
+				"File1"
+			],
+			[
+				"Fil",
+				"File1name"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"wor",
+				"workbook"
+			],
+			[
+				"rESULTshe",
+				"ResultSheetNameeList"
+			],
+			[
+				"Sheet",
+				"SheetNameeList"
+			],
+			[
+				"refere",
+				"ReferenceList"
+			],
+			[
+				"x",
+				"xlsx"
+			],
+			[
+				"Overlap",
+				"OverlapNumber"
+			],
+			[
+				"pva",
+				"pvalue_shresholdlist"
+			],
+			[
+				"work",
+				"worksheet"
+			],
+			[
+				"p",
+				"pvalue_shreshold"
+			],
+			[
+				"resultpv",
+				"ResultPvalueStr"
+			],
+			[
+				"ResultGeneNameSt",
+				"ResultGeneNameSelected"
+			],
+			[
+				"ResultGeneNameS",
+				"ResultGeneNameStr"
+			],
+			[
+				"resultGe",
+				"ResultGeneNameSelected"
+			],
+			[
+				"rE",
+				"ResultGenetype"
+			],
+			[
+				"over",
+				"OverlapNumber"
+			],
+			[
+				"Ov",
+				"OverlapGene"
+			],
+			[
+				"O",
+				"OverlapGene"
+			],
+			[
+				"Col",
+				"NumberofReferenceCol"
+			],
+			[
+				"RE",
+				"ReferenceGeneName"
+			],
+			[
+				"r",
+				"ReferenceData"
+			],
+			[
+				"Re",
+				"ResultData"
+			],
+			[
+				"R",
+				"Reference"
+			],
+			[
+				"A",
+				"Array"
+			],
+			[
+				"in",
+				"interval"
+			],
+			[
+				"N",
+				"Nap"
+			],
+			[
+				"Cn",
+				"Controllist"
+			],
+			[
+				"Con",
+				"Controllist"
+			],
+			[
+				"Contr",
+				"control"
+			],
+			[
+				"con",
+				"Controllist"
+			],
+			[
+				"cl",
+				"colors"
+			],
+			[
+				"colo",
+				"color_list"
+			],
+			[
+				"o",
+				"overlapnumber"
+			],
+			[
+				"red",
+				"Reds"
+			],
+			[
+				"sAM",
+				"SampleName"
+			],
+			[
+				"Sample",
+				"SampleName"
+			],
+			[
+				"y",
+				"yarrray"
+			],
+			[
+				"ov",
+				"overlapnumber"
+			],
+			[
+				"pl",
+				"Plot_range"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Mapping.py",
+			"settings":
+			{
+				"buffer_size": 1259,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "NgeneNhits.py",
+			"settings":
+			{
+				"buffer_size": 1952,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "QualityFilter.py",
+			"settings":
+			{
+				"buffer_size": 1295,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Work/test.m",
+			"settings":
+			{
+				"buffer_size": 1389,
+				"line_ending": "CR"
+			}
+		},
+		{
+			"file": "extract19mer.py",
+			"settings":
+			{
+				"buffer_size": 678,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "biono_pre.pl",
+			"settings":
+			{
+				"buffer_size": 1048,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "---\ntitle: \"sRNA Project\"\nauthor: \"Yubin Xie\"\ndate: \"1/16/2017\"\noutput:\n  html_document:\n    number_sections: yes\n    theme: readable\n    toc: yes\n    toc_float: yes\n---\n\n`r Sys.setenv(RSTUDIO_PANDOC=\"/Applications/RStudio.app/Contents/MacOS/pandoc\")`\n\n**Last updated:** `r format(Sys.Date(),format=\"%B %d, %Y\")`\n\n#Abstrate\n\n#Introduction\n\n#Background\nL6:\nReads length: 125\nReference:\nby TC: \n\nAATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCTttctgtatgagaccaATTTAAAAANNNNNNNNNNNNNNNNNNNtttttAAATtcctttccacaagatatataaagccaagaaatcgaaatactttcaagttacggtaagcatatgatagGATAAAATAAAAGATTTTATTTAGTCTCCAGAGATCGGAAGAGCACACGTCTGAACTCCAGTCACnnnnnnATCTCGTATGCCGTCTTCTGCTTG\n\nPerfect reference:\ntry1, L6sRNA150bp\nTTCTGTATGAGACCAATTTAAAAANNNNNNNNNNNNNNNNNNNTTTTTAAATTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGCATATGATAGtccattttaaaacataattttaaaactgcaa\nAligment rate: 99%+\n\n\n#Pipeline\n\n##Get and sort data\n\n+ unrar zipped files.\n\nfor x in *.rar; do unrar x ${x}; done\n\n+ record file name and group information maunually\n\n+ move all data into one file\n\nfind . -maxdepth 2 -type f -exec mv {} . \\;\n\n+ \n\nrm *_2.fq.gz\n\n+ put them into differernt folder according to lanes (reference) \n\n\n\n##Extraction of 19 mer\n\n**Aim: ** \n\n**Methods:** \n\n+ Build correspondent reference. \n\nReferenceGenome/L6sRNA150bp:\n\n```\nbowtie2-build -c TTCTGTATGAGACCAATTTAAAAANNNNNNNNNNNNNNNNNNNTTTTTAAATTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGCATATGATAGtccattttaaaacataattttaaaactgcaa\n L6sRNA150bp\n```\n+Quality control:\n\npython ~/Dropbox/Linux/scripts/RNAi_Project/QualityFilter.py /media/yubin/Alpha1/sRNAProject/RawData/L6RawData/\n\n(commend=\"gunzip -c \" + inputname + \" | ~/tools/fastx/fastq_quality_filter -q 20 -p 90 -z -o \"+ outputnam)\nimportant: remove Q33!!!\nfilter rate: 60-86%\n\n\n+ Map fastq into reference and merge sam files in the same group.\n\n```\npython ~/Dropbox/Linux/scripts/RNAi_Project/Mapping.py /media/yubin/Alpha/sRNAProject/RawData/L6RawData/\n```\n\n```\ncommend=\"bowtie2 -p 8 -x /media/yubin/Alpha/sRNAProject/ReferenceGenome/L6sRNA150bp -k 1 -U \" + InputName + \" --n-ceil L,0,0.25 -S \" + OutputName\n```\n\n+ Take 19 mer out of perfet mapped reads. \n\n4381739 3984429 3958677\n\n**Results**\n\n##\n\n##\n\n\n#Discussion\n\n#News\n##Updates\nJan.16.2017 Emailed TC to ask about quality filter for fastq \n\n##Meeting\n\n#Reference",
+			"file": "/Users/Work/Dropbox/R/sRNA_Project.Rmd",
+			"file_size": 2215,
+			"file_write_time": 131291613630000000,
+			"settings":
+			{
+				"buffer_size": 2318,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/SublimeKnitr-master/knitr-Markdown.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/SublimeKnitr-master/knitr-Markdown.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeKnitr-master/knitr-Markdown.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/SublimeKnitr-master/knitr-Markdown.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 87.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 92.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/yubin/Dropbox/R/sRNA_Project.Rmd",
+		"/home/yubin/Dropbox/Linux/scripts/HMC_Project/QualityFilter.py",
+		"/media/yubin/Alpha1/sample/removed_sample.txt",
+		"/media/yubin/Alpha1/sample/genotyped_samples.txt",
+		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/NgeneN.pl",
+		"/Users/Work/Dropbox/R/sRNA_Project.Rmd",
+		"/Users/Work/Library/Application Support/Sublime Text 3/Packages/R-Box/R-Box.sublime-settings",
+		"/Users/Work/Library/Application Support/Sublime Text 3/Packages/User/R-Box.sublime-settings",
+		"/Users/Work/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/Work/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Work/Dropbox/Linux/scripts/HMC_Project/HmcPipeline.py",
+		"/Users/Work/Variant_Annotation/case-control.py",
+		"/Users/Work/Dropbox/github.io/Genomics-Box/docs/about.html",
+		"/Users/Work/Dropbox/应用/updog/yubinxie/case-control.py",
+		"/Users/Work/Dropbox/应用/updog/yubinxie/Annotation.html",
+		"/Users/Work/Dropbox/应用/updog/yubinxie/index copy.html",
+		"/Users/Work/Desktop/Dante.html",
+		"/Users/Work/Downloads/bbmap/dedupe.sh",
+		"/Users/Work/Dropbox/LInux/scripts/pairendmap.py",
+		"/Users/Work/Dropbox/RNAi-Project/OverlappingV6.0-11-16.py",
+		"/Users/Work/Dropbox/Sharing-Mela-YB/Life-in-China/Software-PhoneApp.txt",
+		"/Users/Work/Dropbox/Sharing-Mela-YB/Life-in-China/Software-PhoneApp",
+		"/Users/Work/Dropbox/MSc/Work Station/Scripts/Em_search.py",
+		"/Users/Work/DecrypteNCBI.txt",
+		"/Users/Work/scripts/tar.sh",
+		"/Users/Work/scripts/gunzip.sh",
+		"/Users/Work/Dropbox/应用/updog/yubinxie/index.html",
+		"/Users/Work/annovar/example/ex1.avinput",
+		"/Users/Work/Desktop/David Freedman Lab at The University of Chicago | Brain Mechanisms of Vision and Cognition.html",
+		"/Users/Work/Desktop/The Freedman Laboratory at The University of Chicago.html",
+		"/Users/Work/Dropbox/Sharing-Mela-YB/Useful_Software/Slack",
+		"/Users/Work/Desktop/Top99sorted2.bed",
+		"/Users/Work/Desktop/Top99sorted.bed",
+		"/Users/Work/Desktop/ref.bed",
+		"/Users/Work/Downloads/RefSeq_genes-2.bed",
+		"/Users/Work/Downloads/RefSeq_genes.bed",
+		"/Users/Work/Desktop/proteincodingGene.bed",
+		"/Users/Work/Desktop/gencodeGenes.bed",
+		"/Users/Work/Desktop/gencode.v20.annotation.bed",
+		"/Users/Work/Downloads/gencode.v20.annotation.gtf",
+		"/Users/Work/Dropbox/RNAi-Project/Exp_Zhang_drivergene copy/OverlappingV6.0-11-21.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/Fig5/run_Normal_scanHyperDur_920.hoc",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/Fig3/run_Normal_scanHypeTm25_9_5.hoc",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/Fig3/Average_Normal_Timing250.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Multiscale-Methods/Repeat_events.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Multiscale-Methods/CaExpression7_Normal_8-8.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/ElectricalPart/Fig3/run_Reduced.hoc",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/ElectricalPart/Fig1/run_Normal.hoc",
+		"/Users/Work/Dropbox/RNAi-Project/Exp_Zhang_drivergene/OverlappingV6.0-11-16.py",
+		"/Users/Work/Dropbox/RNAi-Project/Exp_lncRNA2cancer/OverlappingV4.0-11-18.py",
+		"/Users/Work/Dropbox/RNAi-Project/Exp_lncRNA/OverlappingV4.0-11-16.py",
+		"/Users/Work/Dropbox/RNAi-Project/Exp_DriverGene/OverlappingV4.0-11-16.py",
+		"/Users/Work/Dropbox/RNAi-Project/Exp_DriverGene/OverlappingV5.0-11-15.py",
+		"/Users/Work/Dropbox/RNAi-Project/Exp_DriverGene/OverlappingV4.0-11-10.py",
+		"/Users/Work/Dropbox/RNAi-Project/Exp_Zhang_McA/OverlappingV6.0-11-16.py",
+		"/Users/Work/Dropbox/RNAi-Project/OverlappingV5.0-11-15.py",
+		"/Users/Work/Dropbox/RNAi-Project/OverlappingV5.0-11-15 copy.py",
+		"/Users/Work/Dropbox/RNAi-Project/OverlappingV4.0-11-10.py",
+		"/Users/Work/Dropbox/RNAi-Project/OverlappingV4.0-11-1.py",
+		"/Users/Work/multi1.py",
+		"/Users/Work/Desktop/machine-learning-ex2/ex2/costFunction.m",
+		"/Users/Work/Desktop/Chicago/Learning materials/MachineLearning/machine-learning-ex1/ex1/featureNormalize.m",
+		"/Users/Work/scripts/Union_V2.1.sh",
+		"/Users/Work/scripts/Intersect_V2.1.sh",
+		"/Users/Work/Psychencode_yale_ASD_DFC_H3K27ac/Union_V2.0.sh",
+		"/Users/Work/Psychencode_yale_ASD_CBC_H3K27ac/Union_V2.0.sh",
+		"/Users/Work/Psychencode_yale_ASD_CBC_H3K27ac/Intersect_V2.0.sh",
+		"/Users/Work/Psychencode_yale_ASD_DFC_H3K27ac/Intersect_V2.0.sh",
+		"/Users/Work/Psychencode_yale_ASD_CBC_H3K27ac/Union.sh",
+		"/Users/Work/Psychencode_yale_ASD_CBC_H3K27ac/Intersect.sh",
+		"/Users/Work/Psychencode_yale_ASD_DFC_H3K27ac copy/cut.sh",
+		"/Users/Work/Psychencode_yale_ASD_CBC_H3K27ac copy/cut.sh",
+		"/Users/Work/Dropbox/Yubin/Script/untitled.sh",
+		"/Users/Work/Dropbox/Yubin/Script/Intersection_DMR.py",
+		"/Users/Work/Dropbox/RNAi-Project/Intersect_Union.py",
+		"/Users/Work/Dropbox/RNAi-Project/OverlappingV3.0-10-31.py",
+		"/Users/Work/Dropbox/RNAi-Project/OverlappingForCosmicData.py",
+		"/Users/Work/Dropbox/RNAi-Project/Overlapping 2.py",
+		"/Users/Work/Desktop/OverlappingForCosmicData.py",
+		"/Users/Work/Desktop/Overlapping 2.py",
+		"/Users/Work/Desktop/Overlapping.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/Script/Compresse_Chemical_TimeCourse_File/Log&Compress.py",
+		"/Users/Work/Desktop/match.py",
+		"/System/Library/PrivateFrameworks/PassKit.framework/Versions/A/Resources/SimulatorPaymentPass.json",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Reduced-LTP/autoextend-Reduced-LTP-key.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Reduced-LTP/autoextend-LTS-LTP-key.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Reduced-LTD/autoextend-Reduced-LTD-key.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/LTS_LTP/autoextend-LTS-LTP-key.py",
+		"/Users/Work/Library/Application Support/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/LTS_LTP/autoextend-normal-LTD-key.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Reduced-LTD/Model_Reduced_initialing_926.cps",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Reduced-LTP/Model_Reduced_initialing_926.cps",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Multiscale-Methods/ProtocolData/CaExpression7_Reduced_8-8.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/Fig2/run_Normal_scanHyperDuration_9-3.hoc",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/Fig2/Average_Normal_Duration.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/Fig5/Average_Normal_Duration_End.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/Fig3/Average_Normal_Timing.py",
+		"/Users/Work/Dropbox/Neuron/Data/duLac_Normal/NormalFreq/Average_Normal_Duration.py",
+		"/Users/Work/Dropbox/Neuron/Mac/Syn1_setting_Yubin.hoc",
+		"/Users/Work/Dropbox/Neuron/Linux/Sin_Syn.hoc",
+		"/Users/Work/Dropbox/Neuron/Data/duLac_Normal/Average_Normal_Amp.py",
+		"/Users/Work/Dropbox/Neuron/Mac/run_Normal_scanHyperDur_920.hoc",
+		"/Users/Work/Dropbox/Neuron/Data/duLac_Normal/LTS_Reduced_last/Average_Normal_Duration.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/Fig5/run_Normal_scanHyperDuration_9-20.hoc",
+		"/Users/Work/Downloads/UPEditorEdgeMac.pkg",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/LTS_LTD/autoextend-normal-LTD-key.py",
+		"/Users/Work/Dropbox/Neuron/Linux/run_LTS.hoc",
+		"/Users/Work/Dropbox/Neuron/Linux/run_mvnB_Y.hoc",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Multiscale-Methods/Model_7_17_T100_R50-LTS_800s-0s.cps",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/ElectricalPart/Fig3/Normal_Ca_Average.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/ElectricalPart/Fig3/run_LTS.hoc",
+		"/Users/Work/Dropbox/Neuron/Mac/run_Normal.hoc",
+		"/Users/Work/Dropbox/Neuron/Mac/run_LTS.hoc",
+		"/Users/Work/Dropbox/Neuron/Mac/run_mvnB_Y.hoc",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Normal_LTP/Key-Normal-LTP/autoextend-normal-LTP-key.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Normal_LTP/autoextend-normal-LTD-key.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Normal_LTD/autoextend-normal-LTD-key.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/Fig3/run_LTS_scanHypeTm25_9_5.hoc",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/Fig1/run_Normal_scanHyperAmp_9-3.hoc",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/Average_Normal_Amp.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/PredictionPart/run_Normal_scanHypeTime_9_4.hoc",
+		"/Users/Work/Dropbox/COPASI/Scripts/Caexpression_6_LTS_6-5.py",
+		"/Users/Work/Dropbox/COPASI/Scripts/CaExpression7_Normal_8-8.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/ElectricalPart/Fig2/Average.py",
+		"/Users/Work/Dropbox/Neuron/Data/Average.py",
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/ElectricalPart/Fig1/Average.py",
+		"/Users/Work/Dropbox/Neuron/Linux/run_Normal.hoc",
+		"/Users/Work/Dropbox/Neuron/Data/duLac_Normal/LYS/Average_Normal_Amp.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"additional",
+			"additional_",
+			"additional s",
+			"python",
+			"split",
+			"spli",
+			"#sidebar-wrapper",
+			"pad",
+			"The most important moment of your life is now.",
+			"welcome",
+			"ac",
+			"00",
+			"protein",
+			"40",
+			"write",
+			"Name of ResultCol",
+			"name of ",
+			"gt; gt",
+			".txt",
+			"lv",
+			"event",
+			"cisco",
+			"PP2Bi",
+			"0.4",
+			"0.04",
+			"0.004",
+			"pp2b",
+			"pp2boff",
+			"koffTA",
+			"if",
+			"plt.colorbar()",
+			"bar",
+			"ba'r",
+			"myplot",
+			"28",
+			"27",
+			"Nap",
+			"20",
+			"SampleName",
+			"label",
+			"lable",
+			"mir",
+			"dra",
+			"min",
+			"lib",
+			"connect",
+			"PKA",
+			"leak",
+			"AMPAR ",
+			"AMPAR",
+			"PH",
+			"PHO",
+			"PHOS",
+			"AM",
+			"AMPAR",
+			"ama",
+			"amapa",
+			"amapar",
+			"PP2B",
+			"leak",
+			" leak",
+			"PP2BI",
+			"PP2B",
+			"pp2bi",
+			"600",
+			"PP2Bi",
+			"PP2B",
+			"197",
+			"PP2BI",
+			"PP2B",
+			"CAMr",
+			"CAMT",
+			"CART",
+			"PP2B",
+			"pka",
+			"konPP2B",
+			"autoCaMKIIp=4.6E+7",
+			"4.6",
+			"autoCaMKIIp"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"gt; ge",
+			"SampleID"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Mapping.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1259,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 96.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "NgeneNhits.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1952,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								158,
+								158
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "QualityFilter.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1295,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								581,
+								581
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/Work/test.m",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1389,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								332,
+								333
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Objective-C/Objective-C.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "extract19mer.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 678,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								632,
+								632
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "biono_pre.pl",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1048,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								173,
+								173
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Perl/Perl.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/Work/Dropbox/R/sRNA_Project.Rmd",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2318,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2181,
+								2181
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SublimeKnitr-master/knitr-Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 718.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 187.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "sRNA_Project.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
