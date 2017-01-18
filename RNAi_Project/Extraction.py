@@ -2,7 +2,7 @@ import re;
 import os
 import sys, optparse
 
-usage="python xx.py inputfile outputfile"
+usage="python xx.py InputFile OutputFile"
 parser = optparse.OptionParser(usage=usage)
 options, infile = parser.parse_args()
 OutputFile=open(infile[1],'w+')

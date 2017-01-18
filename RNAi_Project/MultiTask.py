@@ -17,26 +17,36 @@ OutputName=""
 def main():
 ####Choose One#######
 	#Mapping()
-	Extraction()
+	#Extraction()
+	Counting()
 #####################
 
 	MainPart()
 
+
 def Mapping():
-	global FilePattern, OutputType, CommendLine1, CommendLine2
+	global FilePattern,OutputFolder, OutputType, CommendLine1, CommendLine2
 	FilePattern="_1.fa.gz"
-	OutputType="sam"
+	OutputFolder="sam"
+	OutputType=".sam"
 	CommendLine1="bowtie2 -p 8 -x /media/yubin/Alpha/sRNAProject/ReferenceGenome/L6sRNA150bp -k 1 -U "
 	CommendLine2 = " --n-ceil L,0,0.25 -S "
 
 def Extraction():
-	global FilePattern, OutputType, CommendLine1, CommendLine2
+	global FilePattern,OutputFolder, OutputType, CommendLine1, CommendLine2
 	FilePattern=".sam"
-	OutputType="txt"
+	OutputFolder="txt"
+	OutputType=".txt"
 	CommendLine1="python /home/yubin/Dropbox/Linux/scripts/RNAi_Project/Extraction.py "
 	CommendLine2=" "
 
-
+def Counting():
+	global FilePattern, OutputFolder,OutputType, CommendLine1, CommendLine2
+	FilePattern=".txt"
+	OutputFolder="counts"
+	OutputType="-counts.txt"
+	CommendLine1="python /home/yubin/Dropbox/Linux/scripts/RNAi_Project/CountingRead.py "
+	CommendLine2=" "
 
 def MainPart():
 	global FilePattern, OutputType, CommendLine1,CommendLine2
@@ -66,7 +76,7 @@ def MainPart():
 	
 	for sample in NameList:
 		InputName = GroupName[i]
-		OutputName= OutputType + "/"+NameList[i]+"." + OutputType
+		OutputName= OutputFolder + "/"+NameList[i] + OutputType
 		commend=CommendLine1 + InputName + CommendLine2 + OutputName
 		print commend
 		process=subprocess.Popen(commend,shell=True,stdout=subprocess.PIPE)
