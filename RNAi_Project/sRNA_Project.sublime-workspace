@@ -4,6 +4,54 @@
 		"selected_items":
 		[
 			[
+				"case",
+				"CaseFile"
+			],
+			[
+				"l",
+				"OutputLineNumbrt"
+			],
+			[
+				"in",
+				"infile"
+			],
+			[
+				"Out",
+				"OutputFile3"
+			],
+			[
+				"Outp",
+				"OutputLineNumbrt"
+			],
+			[
+				"P",
+				"P_adjustList"
+			],
+			[
+				"output",
+				"OutputLineNumbrt"
+			],
+			[
+				"O",
+				"OutputFile"
+			],
+			[
+				"p",
+				"Pvalue"
+			],
+			[
+				"Cont",
+				"ControlCounts"
+			],
+			[
+				"Tto",
+				"TotalCaseLineNumber"
+			],
+			[
+				"ca",
+				"TotalCaseLineNumber"
+			],
+			[
 				"C",
 				"ControlCounts"
 			],
@@ -14,10 +62,6 @@
 			[
 				"Co",
 				"ControlDic"
-			],
-			[
-				"Out",
-				"OutputFolder"
 			],
 			[
 				"In",
@@ -36,16 +80,8 @@
 				"ReadsDic"
 			],
 			[
-				"in",
-				"inputfile"
-			],
-			[
 				"COm",
 				"CommendLine1"
-			],
-			[
-				"O",
-				"OutputName"
 			],
 			[
 				"F",
@@ -110,10 +146,6 @@
 			[
 				"work",
 				"worksheet"
-			],
-			[
-				"p",
-				"pvalue_shreshold"
 			],
 			[
 				"resultpv",
@@ -236,7 +268,16 @@
 			"file": "SignificantReads.py",
 			"settings":
 			{
-				"buffer_size": 1424,
+				"buffer_size": 3582,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Padjust.py",
+			"settings":
+			{
+				"buffer_size": 195,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -246,15 +287,6 @@
 			"settings":
 			{
 				"buffer_size": 1952,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/yubin/Dropbox/R/sRNA_Project.Rmd",
-			"settings":
-			{
-				"buffer_size": 3287,
-				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -400,7 +432,7 @@
 	},
 	"file_history":
 	[
-		"/media/yubin/Alpha/sRNAProject/rawData/L6RawData/sam/txt/group/counts/A-statis.txt",
+		"/home/yubin/Dropbox/R/sRNA_Project.Rmd",
 		"/media/yubin/Alpha/sRNAProject/rawData/L6RawData/sam/txt/A1-19mer.txt",
 		"/media/yubin/Alpha/sRNAProject/rawData/L6RawData/sam/txt/group/B1-3-19mer-counts.txt",
 		"/media/yubin/Alpha/sRNAProject/rawData/L6RawData/sam/txt/group/A1-4-19mer-counts-counts.txt",
@@ -688,8 +720,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								2223,
+								2223
 							]
 						],
 						"settings":
@@ -698,10 +730,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 228.0,
+						"translation.y": 651.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -710,15 +742,44 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1424,
+						"buffer_size": 3582,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								70,
-								70
+								1005,
+								1007
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 223.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Padjust.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 195,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								195,
+								82
 							]
 						],
 						"settings":
@@ -729,11 +790,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "NgeneNhits.py",
 					"semi_transient": false,
 					"settings":
@@ -745,7 +806,7 @@
 						"selection":
 						[
 							[
-								1904,
+								1933,
 								1904
 							]
 						],
@@ -755,38 +816,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 608.0,
+						"translation.y": 658.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/home/yubin/Dropbox/R/sRNA_Project.Rmd",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3287,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2862,
-								2862
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/R-Box/syntax/R Markdown.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 880.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -860,8 +893,8 @@
 						"selection":
 						[
 							[
-								18,
-								18
+								581,
+								581
 							]
 						],
 						"settings":
@@ -873,7 +906,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{

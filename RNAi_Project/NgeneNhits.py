@@ -4,18 +4,18 @@ import sys, optparse;
 import timeit;
 start = timeit.default_timer()
 
-usage="python xx.py inputfile reference"
+usage="python xx.py InputSamFile Reference"
 parser = optparse.OptionParser(usage=usage)
 options, infile = parser.parse_args()
-samfile=infile[0]
+SamFile=infile[0]
 referencefile=infile[1]
-outputfile1="genelist.txt" 
-outputfile2="probelist.txt"
-openoutputfile1=open(outputfile1,"w+")
-openoutputfile2=open(outputfile2,"w+")
+OutputFile1="genelist.txt" 
+OutputFile2="probelist.txt"
+openOutputFile1=open(OutputFile1,"w+")
+openOutputFile2=open(OutputFile2,"w+")
 try:
-	with open (samfile,"r") as opensamfile :
-		print "samfile OK"
+	with open (SamFile,"r") as openSamFile :
+		print "SamFile OK"
 except IOError:
 	print "openning input file failed"
 
@@ -44,8 +44,8 @@ probelist=[]
 probeCountDic={}
 genelist=[]
 geneCountDic={}
-with open (samfile,"r") as opensamfile :
-	for samline in opensamfile:
+with open (SamFile,"r") as openSamFile :
+	for samline in openSamFile:
 		content=samline.split("\t")
 		probe=content[0]
 		gene=content[2]
@@ -64,7 +64,7 @@ print "done part 2"
 #print probelist
 ###################3
 for probe in probelist:
-	openoutputfile2.write("%s\t%s\n" % (probe,probeCountDic[probe]))
+	openOutputFile2.write("%s\t%s\n" % (probe,probeCountDic[probe]))
 print "done part 3"
 
 ##################4
@@ -72,7 +72,7 @@ for gene in genelist:
 	#print gene,"\n",geneCountDic[gene],"\n",D[gene],"\n"
 	ratio=float(geneCountDic[gene])/float(D[gene])
 	#print ratio
-	openoutputfile1.write("%s\t%s\t%s\t%.5f\n" % (gene,D[gene],geneCountDic[gene],ratio))
+	openOutputFile1.write("%s\t%s\t%s\t%.5f\n" % (gene,D[gene],geneCountDic[gene],ratio))
 print "done part 4"
 stop = timeit.default_timer()
 print stop - start

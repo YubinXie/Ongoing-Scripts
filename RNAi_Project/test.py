@@ -1,6 +1,8 @@
-import rpy2
-import scipy.stats as stats
+import numpy
 
-
-Oddsratio, Pvalue = stats.fisher_exact([[2,15],[10,3]], alternative="less")
-print Oddsratio, Pvalue
+D={}
+for i in range(100):
+	D[i]=[]
+	D[i].append(i)
+	D[i].append(i)
+print D
