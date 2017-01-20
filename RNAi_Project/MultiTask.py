@@ -69,7 +69,7 @@ def MainPart():
 	
 	####################################
 	i=0
-	InitialCommend="mkdir -p " + OutputType
+	InitialCommend="mkdir -p " + OutputFolder
 	process=subprocess.Popen(InitialCommend,shell=True,stdout=subprocess.PIPE)
 	process.wait()
 	print process.returncode
@@ -81,7 +81,7 @@ def MainPart():
 		print commend
 		process=subprocess.Popen(commend,shell=True,stdout=subprocess.PIPE)
 		process.wait()
-		print process.stdout.readline()
+		print process.stdout.readlines()
 		i=i+1
 	##########################
 	
