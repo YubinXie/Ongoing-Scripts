@@ -2,8 +2,8 @@
 use strict;
 
 my $infile = $ARGV[0];
-#my $contig= "/group/xhe-lab/zifeng/cancer/gencode.v24.transcripts.fa";
-my $contig= "/group/xhe-lab/zifeng/cancer/gencode.vM9.transcripts.fa";
+my $contig= "../../referenceGenome/gencode.v24.transcripts.fa";
+#my $contig= "/group/xhe-lab/zifeng/cancer/gencode.vM9.transcripts.fa";
 #$mapfile = $ARGV[1];
 my $outfile1 = "probelist";
 my $outfile2 = "genelist";
@@ -22,23 +22,18 @@ my $seq_name = $1 ;
 my $seq = '' ;
 #my %contig_seq = () ;
 my %contig_seqlength = () ;
-
 while (<CONTIG>) {
-    
+    chomp ;
+    $seq_name = $1 ;
+    $seq_name =~ tr /\|/_/;
     if (/^>(\S+)/) {
-        $seq_name = $1 ;
-        $seq_name =~ tr /\|/_/;
-        while (<CONTIG>) {
-            chomp ;
-            
-            if (/^>(\S+)/) {
-                $seq_name =~ tr /\|/_/;
+    $seq_name =~ tr /\|/_/;
 		#print "$seq_name\n" ;
                 
                 #$contig_seq{$seq_name} = $seq ;
-                $contig_seqlength{$seq_name} = length($seq) ;
-                $seq_name = $1 ;
-                $seq = '' ;
+    $contig_seqlength{$seq_name} = length($seq) ;
+    $seq_name = $1 ;
+    $seq = '' ;
             }
             else {
                 $seq .= $_ ;
@@ -46,8 +41,6 @@ while (<CONTIG>) {
             
         }
         
-    }
-}
 
 #$contig_seq{$seq_name} = $seq ;
 $contig_seqlength{$seq_name} = length($seq) ;
