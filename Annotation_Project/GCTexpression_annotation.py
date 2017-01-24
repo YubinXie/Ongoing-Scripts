@@ -32,9 +32,10 @@ with open(ExpressionFile,"r") as OpenExpressionFile:
     ElementList=row.split("\t")
     GeneName=ElementList[1]
     if ExpressionRow==1:
-      print ElementList[33],ElementList[34]
+      Target=ElementList[32:34]
+      print Target
     if ExpressionRow>1:
-      Expression_Average=(float(ElementList[33]) + float(ElementList[34]))/2
+      Expression_Average= mean(Target)
       ExpressionDic[GeneName]=Expression_Average
       ExpressionGene.append(GeneName)
 #print ExpressionGene 

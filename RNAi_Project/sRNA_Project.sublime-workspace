@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"open",
+				"openOutputFile1"
+			],
+			[
+				"Ou",
+				"OutputFile3"
+			],
+			[
+				"sam",
+				"samline"
+			],
+			[
+				"seq",
+				"seqname"
+			],
+			[
 				"Gene",
 				"GeneName"
 			],
@@ -66,10 +82,6 @@
 			[
 				"out",
 				"OutputType"
-			],
-			[
-				"Ou",
-				"OutputContent"
 			],
 			[
 				"Outpu",
@@ -265,46 +277,6 @@
 			}
 		},
 		{
-			"file": "test.py",
-			"settings":
-			{
-				"buffer_size": 88,
-				"encoding": "UTF-8",
-				"line_ending": "Unix",
-				"name": "ß"
-			}
-		},
-		{
-			"file": "NgeneNhits.py",
-			"settings":
-			{
-				"buffer_size": 1955,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/yubin/Dropbox/Linux/scripts/Annotation_Project/CCTDdata/GCTexpression_annotation.py",
-			"settings":
-			{
-				"buffer_size": 3000,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "---\ntitle: \"sRNA Project\"\nauthor: \"Yubin Xie\"\ndate: \"1/16/2017\"\noutput:\n  html_document:\n    number_sections: yes\n    theme: readable\n    toc: yes\n    toc_float: yes\n---\n\n`r Sys.setenv(RSTUDIO_PANDOC=\"/Applications/RStudio.app/Contents/MacOS/pandoc\")`\n\n**Last updated:** `r format(Sys.Date(),format=\"%B %d, %Y\")`\n\n#Abstrate\n\n#Introduction\n\n#Background\nL6:\nReads length: 125\nReference:\nby TC: \n\nAATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCTttctgtatgagaccaATTTAAAAANNNNNNNNNNNNNNNNNNNtttttAAATtcctttccacaagatatataaagccaagaaatcgaaatactttcaagttacggtaagcatatgatagGATAAAATAAAAGATTTTATTTAGTCTCCAGAGATCGGAAGAGCACACGTCTGAACTCCAGTCACnnnnnnATCTCGTATGCCGTCTTCTGCTTG\n\nPerfect reference:\ntry1, L6sRNA150bp\nTTCTGTATGAGACCAATTTAAAAANNNNNNNNNNNNNNNNNNNTTTTTAAATTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGCATATGATAGtccattttaaaacataattttaaaactgcaa\n\ntry2, L6sRNA208bp\nAATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCTTTCTGTATGAGACCAATTTAAAAACATGTAAAACTTTATGGCATTTTTAAATTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGCATATGATAGtccattttaaaacataattttaaaactgcaa\n\n\nZifeng pipeline:\n15mer: delet left and right side total 4-mer, so each read become 5. and 3 mismatch in mapping.\n\n\n#Pipeline\n\n##Get and sort data\n\n+ unrar zipped files.\n\nfor x in *.rar; do unrar x ${x}; done\n\n+ record file name and group information maunually\n\n+ move all data into one file\n\nfind . -maxdepth 2 -type f -exec mv {} . \\;\n\n+ \n\nrm *_2.fq.gz\n\n+ put them into differernt folder according to lanes (reference) \n\n\n\n##Extraction of 19-mer reads \n\n**Aim: ** \n\n**Methods:** \n\n+ Build correspondent reference. \n\nReferenceGenome/L6sRNA150bp:\n\n```\nbowtie2-build -c TTCTGTATGAGACCAATTTAAAAANNNNNNNNNNNNNNNNNNNTTTTTAAATTCCTTTCCACAAGATATATAAAGCCAAGAAATCGAAATACTTTCAAGTTACGGTAAGCATATGATAGtccattttaaaacataattttaaaactgcaa\n L6sRNA150bp\n```\n+Quality control:\n\npython ~/Dropbox/Linux/scripts/RNAi_Project/QualityFilter.py /media/yubin/Alpha1/sRNAProject/RawData/L6RawData/\n\n(commend=\"gunzip -c \" + inputname + \" | ~/tools/fastx/fastq_quality_filter -q 20 -p 90 -z -o \"+ outputnam)\nimportant: remove Q33!!!\nfilter rate: 60-86%\n\n\n+ Map fastq into reference.\n\n\n+ Take 19 mer out of perfet mapped reads. \n```\npython ~/Dropbox/Linux/scripts/RNAi_Project/MultiTask.py /media/yubin/Alpha/sRNAProject/RawData/L6RawData/sam/\n```\n\n(CommendLine=python /home/yubin/Dropbox/Linux/scripts/RNAi_Project/Extraction.py InputFile OutputFile)\n\n+ Count reads in each group\nFirstly rename the file name as A1,A2,...; B1, B2,...; C1, C2...merge 19-mer reads files by group.\n\n\n```\nmkdir group\ncat A* > group/A-group-19mer.txt\ncat B* > group/B-group-19mer.txt\ncat C* > group/C-group-19mer.txt\n\n```\nThen count reads number in each group.\n\n```\npython ~/Dropbox/Linux/scripts/RNAi_Project/MultiTask.py /media/yubin/Alpha/sRNAProject/RawData/L6RawData/sam/txt\n\n```\n\n(CommendLine=python /home/yubin/Dropbox/Linux/scripts/RNAi_Project/CountingRead.py InputFile OutputFile)\n\n\n**Input**:\n**Output**:\n\n\n+ Perform statistic test\n\n  ```\npython ~/Dropbox/Linux/scripts/RNAi_Projrct/SignificantRead.py ControlFile CaseFile\n\n```\nFunction:\n1. Fisher exact test: \n\n   Case Control\n\nTarget reads number x y\nTotal reads numbrt X Y\nP value: P(X>Y)\nOdds ratio: (x/X)/(y/Y)\n\nAchieved by python mudule ` ` :\n\n2. P Adjust, FDR method for multi-comparasion.\n\nAchieved by python module `rpy2`(implement of R) :\n\n3. \n\n**Input:** Grouped case and control files with reads sequencing and number of each read.\n+ \t\tC1-10-19mer-counts.txt\n+ \t\tA1-8-19mer-counts.txt\n\n**Output:** Files that contain only significant reads and all reads with information: reads sequencing, case number, control number, total case reads number, total control reads number, odds ratio, p value, p.adjust value.  reads new name. Files that contain only significant reads only and all reads \n\n+\t\tA1-4-19mer-significantreads.txt \n+\t\tA1-4-19mer-significantreads.fa\n+\t\tA1-4-19mer-wholereads.txt\n+\t\tA1-4-19mer-wholereads.fa\n\n\n\n+ Convert 19-mer files into fasta format.\n\n\n## Map reads into genome.\n\n\n\n**Results**\n\n##\n\n##\n\n\n#Discussion\n\n#News\n##Updates\nJan.18.2017:\nDone: Workflow for extraction of 19-mer reads and performing statistics on reads Ready! \nNext: Workflow for mapping reads into genome.\n\nJan.16.2017:\nQuestion: Quality filter for fastq? \nEvidence: 60-86% reads pass 90% pass quality 20 \nDecision: No quality filter.\n\n##Meeting\n\n#Reference",
-			"file": "/home/yubin/Dropbox/R/sRNA_Project.Rmd",
-			"file_size": 4232,
-			"file_write_time": 131293482003133676,
-			"settings":
-			{
-				"buffer_size": 4347,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "QualityFilter.py",
 			"settings":
 			{
@@ -314,19 +286,19 @@
 			}
 		},
 		{
-			"file": "Extraction.py",
+			"file": "CountingHits.py",
 			"settings":
 			{
-				"buffer_size": 686,
+				"buffer_size": 2772,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "CountingRead.py",
+			"file": "NgeneN.pl",
 			"settings":
 			{
-				"buffer_size": 841,
+				"buffer_size": 2297,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -446,20 +418,59 @@
 	},
 	"file_history":
 	[
+		"/Users/Work/Dropbox/Linux/scripts/RNAi_Project/Extraction.py",
+		"/Users/Work/Dropbox/Linux/scripts/RNAi_Project/test.py",
+		"/home/yubin/Dropbox/R/sRNA_Project.Rmd",
+		"/home/yubin/Dropbox/Linux/scripts/Annotation_Project/CCTDdata/GCTexpression_annotation.py",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV.15mer.fasta1.out/logs/run.log",
+		"/media/yubin/Alpha/sRNAProject/srna/binomialtest/DrugV.15mer.genelist2",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV.15mer.fasta.1mis.out/DrugV15mer1mi_Genelist.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV.15mer.fasta1.out/DrugV.15mer_Genelist.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV.15mer.fasta.nomis.out/Drug15mernomi_Genelist.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV.15mer.fasta.nomis.out/Drug15mer1mi_Genelist.txt",
+		"/media/yubin/Alpha/sRNAProject/referenceGenome/gencode.v24.transcripts.fa",
+		"/home/yubin/.cache/.fr-gGp3no/gencode.v24.chr_patch_hapl_scaff.annotation.gtf",
+		"/media/yubin/Alpha/sRNAProject/srna/binomialtest/MEF.15mer.genelist2",
+		"/media/yubin/Alpha/sRNAProject/srna/binomialtest/MEF.genelist2",
+		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist.MEF",
+		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta.out/logs/run.log",
+		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta2.out/logs/run.log",
+		"/media/yubin/Alpha/sRNAProject/srna/DrugV.15mer.fasta.out/DrugV_15mer_Genelist.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV.15mer.fasta2.mis3.out/Drug15MER.4MIS_Genelist.txt",
+		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/NgeneNhits.py",
+		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta2.out/align_summary.txt",
+		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta2.out/logs/tophat.log",
+		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta2.out/logs/run.resume0.log",
+		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist.control",
+		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/probelist.drug",
+		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist.drug",
+		"/media/yubin/Alpha/sRNAProject/srna/binomialtest/DrugV.genelist2",
+		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelistall/genelist.Adrug.bn",
+		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist.drug.bnm",
+		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist.A62",
+		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/probelist.control",
+		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/bionomialprep_probe.pl",
+		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/bionomialprep_gene.pl",
+		"/media/yubin/Alpha/sRNAProject/srna/DrugV.15mer.fasta.out/logs/tophat.log",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV.15mer.fasta1.out/DrugV.15mer_Transcriptlist.txt",
+		"/media/yubin/Alpha/sRNAProject/srna/DrugV.15mer.fasta.out/DrugV_15mer_Transcriptlist.txt",
+		"/media/yubin/Alpha/sRNAProject/srna/DrugV.15mer.fasta",
+		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist",
+		"/media/yubin/Alpha/sRNAProject/srna/DrugV.15mer.fasta.out/DrugV_15mer_Probelist.txt",
+		"/media/yubin/Alpha/sRNAProject/srna/gencode.v24.transcripts.fa",
+		"/media/yubin/Alpha/sRNAProject/srna/DrugV.15mer.fasta.out/DrugV_15mer.sam",
+		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/CountingRead.py",
 		"/home/yubin/MI_HeartExpression.txt",
 		"/home/yubin/MIdata_heartexpression.txt",
 		"/home/yubin/Dropbox/Linux/scripts/Annotation_Project/GCTexpression_annotation.py",
 		"/home/yubin/test.txt",
 		"/media/yubin/Alpha/MIdata/GTEx_Analysis_v6p_RNA-seq_RNA-SeQCv1.1.8_gene_median_rpkm.gct",
 		"/home/yubin/tools/annovar/CCTD_exon_constarin.log",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist.drug",
-		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta.out/logs/run.log",
 		"/media/yubin/Alpha/sRNAProject/sRNA/test19.fasta",
 		"/media/yubin/Alpha/sRNAProject/sRNA/A62.15.fasta",
 		"/media/yubin/Alpha/sRNAProject/sRNA/A62.17.fasta",
 		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta.out/logs/reports.samtools_sort.log5",
 		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta.out/logs/reports.merge_bam.log",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist.drug.bnm",
 		"/media/yubin/Alpha/sRNAProject/sRNA/controlseq.fasta.out/probelist",
 		"/media/yubin/Alpha/sRNAProject/sRNA/controlseq.fasta.out/genelist",
 		"/media/yubin/Alpha/sRNAProject/sRNA/DrugV.15mer.fasta",
@@ -534,46 +545,7 @@
 		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Multiscale-Methods/Repeat_events.py",
 		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Multiscale-Methods/CaExpression7_Normal_8-8.py",
 		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/ElectricalPart/Fig3/run_Reduced.hoc",
-		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/ElectricalPart/Fig1/run_Normal.hoc",
-		"/Users/Work/Dropbox/RNAi-Project/Exp_Zhang_drivergene/OverlappingV6.0-11-16.py",
-		"/Users/Work/Dropbox/RNAi-Project/Exp_lncRNA2cancer/OverlappingV4.0-11-18.py",
-		"/Users/Work/Dropbox/RNAi-Project/Exp_lncRNA/OverlappingV4.0-11-16.py",
-		"/Users/Work/Dropbox/RNAi-Project/Exp_DriverGene/OverlappingV4.0-11-16.py",
-		"/Users/Work/Dropbox/RNAi-Project/Exp_DriverGene/OverlappingV5.0-11-15.py",
-		"/Users/Work/Dropbox/RNAi-Project/Exp_DriverGene/OverlappingV4.0-11-10.py",
-		"/Users/Work/Dropbox/RNAi-Project/Exp_Zhang_McA/OverlappingV6.0-11-16.py",
-		"/Users/Work/Dropbox/RNAi-Project/OverlappingV5.0-11-15.py",
-		"/Users/Work/Dropbox/RNAi-Project/OverlappingV5.0-11-15 copy.py",
-		"/Users/Work/Dropbox/RNAi-Project/OverlappingV4.0-11-10.py",
-		"/Users/Work/Dropbox/RNAi-Project/OverlappingV4.0-11-1.py",
-		"/Users/Work/multi1.py",
-		"/Users/Work/Desktop/machine-learning-ex2/ex2/costFunction.m",
-		"/Users/Work/Desktop/Chicago/Learning materials/MachineLearning/machine-learning-ex1/ex1/featureNormalize.m",
-		"/Users/Work/scripts/Union_V2.1.sh",
-		"/Users/Work/scripts/Intersect_V2.1.sh",
-		"/Users/Work/Psychencode_yale_ASD_DFC_H3K27ac/Union_V2.0.sh",
-		"/Users/Work/Psychencode_yale_ASD_CBC_H3K27ac/Union_V2.0.sh",
-		"/Users/Work/Psychencode_yale_ASD_CBC_H3K27ac/Intersect_V2.0.sh",
-		"/Users/Work/Psychencode_yale_ASD_DFC_H3K27ac/Intersect_V2.0.sh",
-		"/Users/Work/Psychencode_yale_ASD_CBC_H3K27ac/Union.sh",
-		"/Users/Work/Psychencode_yale_ASD_CBC_H3K27ac/Intersect.sh",
-		"/Users/Work/Psychencode_yale_ASD_DFC_H3K27ac copy/cut.sh",
-		"/Users/Work/Psychencode_yale_ASD_CBC_H3K27ac copy/cut.sh",
-		"/Users/Work/Dropbox/Yubin/Script/untitled.sh",
-		"/Users/Work/Dropbox/Yubin/Script/Intersection_DMR.py",
-		"/Users/Work/Dropbox/RNAi-Project/Intersect_Union.py",
-		"/Users/Work/Dropbox/RNAi-Project/OverlappingV3.0-10-31.py",
-		"/Users/Work/Dropbox/RNAi-Project/OverlappingForCosmicData.py",
-		"/Users/Work/Dropbox/RNAi-Project/Overlapping 2.py",
-		"/Users/Work/Desktop/OverlappingForCosmicData.py",
-		"/Users/Work/Desktop/Overlapping 2.py",
-		"/Users/Work/Desktop/Overlapping.py",
-		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/Script/Compresse_Chemical_TimeCourse_File/Log&Compress.py",
-		"/Users/Work/Desktop/match.py",
-		"/System/Library/PrivateFrameworks/PassKit.framework/Versions/A/Resources/SimulatorPaymentPass.json",
-		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Reduced-LTP/autoextend-Reduced-LTP-key.py",
-		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Reduced-LTP/autoextend-LTS-LTP-key.py",
-		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/MultiscalePart/Reduced-LTD/autoextend-Reduced-LTD-key.py"
+		"/Users/Work/Dropbox/Yubins Project/Multi-scale_paper/ElectricalPart/Fig1/run_Normal.hoc"
 	],
 	"find":
 	{
@@ -591,6 +563,28 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ENSG00000000971.15",
+			"ENSG00000260454",
+			"ENSG00000242568",
+			"ENSG00000223646",
+			"ENSG00000242568",
+			"ENSG00000000419.12",
+			"ENSG00000000005.5",
+			"ENSG00000000003.14",
+			"ENSG00000214787.8",
+			"ENSG00000280171.1",
+			"ENSG00000214787.8",
+			"ENSG00000187688.14",
+			"ENSG00000139131.12",
+			"ENSG00000003400.14",
+			"ENSG00000000005.5",
+			"ENSGR0000281849.3",
+			"ENSG00000000003.14",
+			"ENST00000001008.5",
+			"ENST00000324868.12",
+			"ENST00000324868.12_ENSG00000139131.12_OTTHUMG00000169454.2_OTTHUMT00000404153.1_YARS2-001_YARS2_2122_protein_coding_",
+			"ENST00000324868.12|ENSG00000139131.12|OTTHUMG00000169454.2|OTTHUMT00000404153.1|YARS2-001|YARS2|2122|protein_coding|",
+			"referencefile",
 			"samfile",
 			"outputfile2",
 			"Annotating",
@@ -683,6 +677,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"ReferenceFile",
 			"SamFile",
 			"OutputFile2",
 			"SamFile",
@@ -700,7 +695,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -729,7 +724,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -755,10 +750,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 228.0,
+						"translation.y": 342.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -780,13 +775,14 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1026.0,
+						"translation.y": 1084.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -814,127 +810,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "test.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 88,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								80,
-								80
-							]
-						],
-						"settings":
-						{
-							"auto_name": "ß",
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "NgeneNhits.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1955,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								657,
-								657
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "/home/yubin/Dropbox/Linux/scripts/Annotation_Project/CCTDdata/GCTexpression_annotation.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3000,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								828,
-								828
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 171.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/home/yubin/Dropbox/R/sRNA_Project.Rmd",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4347,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1197,
-								1197
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/R-Box/syntax/R Markdown.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 342.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
+					"buffer": 4,
 					"file": "QualityFilter.py",
 					"semi_transient": false,
 					"settings":
@@ -959,24 +839,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "Extraction.py",
+					"buffer": 5,
+					"file": "CountingHits.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 686,
+						"buffer_size": 2772,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								41,
-								41
+								2651,
+								2651
 							]
 						],
 						"settings":
@@ -988,40 +868,41 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "CountingRead.py",
+					"buffer": 6,
+					"file": "NgeneN.pl",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 841,
+						"buffer_size": 2297,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								18,
-								18
+								1100,
+								1100
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Perl/Perl.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 7,
 					"file": "biono_pre.pl",
 					"semi_transient": false,
 					"settings":
@@ -1045,7 +926,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]

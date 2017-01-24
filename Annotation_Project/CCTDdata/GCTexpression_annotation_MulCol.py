@@ -5,9 +5,10 @@ import numpy;
 import timeit;
 
 ############Adjustbale Variables Explaination##############
-#1. In Part1, you can edit the columns where you get your expression values are from by changing Expression_Average calculation in line37
+#Yubin Xie Jan.2017
+#1. In Part1, you can edit the columns where you get your expression values are from by changing Expression_Average calculation in line34
 
-#2. In Part2, you can edit the column number where your gene name is by changing GeneName definition in line55.
+#2. In Part2, you can edit the column number where your gene name is by changing GeneName definition in line59.
 ##########################################################
 
 ####################Initialization####################

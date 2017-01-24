@@ -4,14 +4,14 @@ import sys, optparse;
 import timeit;
 start = timeit.default_timer()
 
-usage="python xx.py InputSamFile Reference"
+usage="python xx.py InputSamFile"
 parser = optparse.OptionParser(usage=usage)
 options, infile = parser.parse_args()
 SamFile=infile[0]
-ReferenceFile=infile[1]
+#ReferenceFile=infile[1]
 OutputFile1=SamFile.strip(".sam") + "_Transcriptlist.txt" 
-OutputFile2=SamFile.strip(".sam") + "_Probelist.txt"
-OutputFile3=SamFile.strip(".sam") + "_Genelist.txt" 
+OutputFile3=SamFile.strip(".sam") + "_GeneCountbyProbelist.txt"
+OutputFile2=SamFile.strip(".sam") + "_GeneCountbyReadlist.txt" 
 
 try:
 	with open (SamFile,"r") as openSamFile :
@@ -19,34 +19,11 @@ try:
 except IOError:
 	print "openning input file failed"
 
-try:
-	with open (ReferenceFile,"r") as openReferenceFile:
-		print "reference file OK"
-except IOError:
-	print "openning reference file failed"
 
-
-###################1
-D={}
-
-with open (ReferenceFile,"r") as openReferenceFile:
-	for lines in openReferenceFile:
-		if ">" in lines:
-			seqname=lines.lstrip(">").rstrip("\n")
-			#print seqname
-		else:
-			seqcontent=lines.rstrip("\n")
-			D[seqname]=len(seqcontent)
-			#print seqname,seqcontent, D[seqname]
-print "done part 1"
-stop = timeit.default_timer()
-print stop - start, "seconds"
-
-##################2
-probelist=[]
+transCountDic={}
 probeCountDic={}
-genelist=[]
-geneCountDic={}
+UniqueGeneCountDic={}
+GeneName={}
 
 with open (SamFile,"r") as openSamFile :
 	for samline in openSamFile:
@@ -54,56 +31,51 @@ with open (SamFile,"r") as openSamFile :
 			continue 
 		content=samline.strip("\n").split("\t")
 		probe=content[0]
-		gene=content[2]
-		if probe not in probeCountDic:
-			probeCountDic[probe]=1
-			#print probe
-		else:
-			probeCountDic[probe]=probeCountDic[probe]+1
-		if gene not in geneCountDic:
-			geneCountDic[gene]=1
-		else:
-			geneCountDic[gene]=geneCountDic[gene]+1
+		trans=content[2]
+		read=content[9]
+		NameList=trans.split("|")
+		GeneID=NameList[1]
+		GeneName[GeneID]=NameList[5] + NameList[7]
 
-print "done part 2"
+		if trans not in transCountDic:
+			transCountDic[trans] = 1
+		else:
+			transCountDic[trans] = transCountDic[trans]+1
+		if GeneID not in UniqueGeneCountDic:
+			UniqueGeneCountDic[GeneID] = []
+			UniqueGeneCountDic[GeneID].append(read)
+			probeCountDic[GeneID]=[]
+			probeCountDic[GeneID].append(probe)
+		else:
+			UniqueGeneCountDic[GeneID].append(read)
+			probeCountDic[GeneID].append(probe)
+
+print "done part 1"
 stop = timeit.default_timer()
 print stop - start, "seconds"
 #print probelist
 
 
-###################3
-with open(OutputFile2,"w+") as openOutputFile2:
-	for probe in probeCountDic.keys():
-		openOutputFile2.write("%s\t%s\n" % (probe,probeCountDic[probe]))
-
-print "done part 3"
-stop = timeit.default_timer()
-print stop - start, "seconds"
-
-
-UniqueGeneCountDic={}
 
 ##################4
 with open(OutputFile1,"w+") as openOutputFile1:
-	for gene in geneCountDic.keys():
-		ReferenceLength=(D[gene])
-		SamGeneHits=(geneCountDic[gene])
-		#print gene,"\n",geneCountDic[gene],"\n",D[gene],"\n"
-		ratio=float(SamGeneHits)/float(ReferenceLength)
-		gene=gene.replace('|','\t')
-		openOutputFile1.write("%s%s\t%s\t%.5f\n" % (gene,ReferenceLength,SamGeneHits,ratio))
-		GeneID=gene.split("\t")[1]
-		if GeneID not in UniqueGeneCountDic:
-			UniqueGeneCountDic[GeneID]=SamGeneHits
-		else:
-			UniqueGeneCountDic[GeneID]=max(UniqueGeneCountDic[GeneID],SamGeneHits)
+	for trans in transCountDic.keys():
+		SamGeneHits=(transCountDic[trans])
+		trans = trans.replace('|','\t')
+		openOutputFile1.write("%s%s\n" % (trans,SamGeneHits))
 
-with open(OutputFile3, "w+") as openOutputFile3:
+
+with open(OutputFile2, "w+") as openOutputFile2, open(OutputFile3, "w+") as openOutputFile3:
 	for gene in UniqueGeneCountDic.keys():
-		openOutputFile3.write("%s\t%s\n" % (gene,UniqueGeneCountDic[gene]))
+		#print UniqueGeneCountDic[gene]
+		GeneCount=len(set(UniqueGeneCountDic[gene]))
+		Genename=GeneName[gene]
+		openOutputFile2.write("%s\t%s\n" % (gene,GeneCount))
+		probeCount=len(set(probeCountDic[gene]))
+		openOutputFile3.write("%s\t%s\t%s\n" % (gene,GeneCount,probeCount))
 
 
 
-print "done part 4"
+print "done part 2"
 stop = timeit.default_timer()
 print stop - start, "seconds"

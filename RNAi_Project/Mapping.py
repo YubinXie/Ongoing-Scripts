@@ -44,7 +44,7 @@ for sample in NameList:
 	OutputName="sam/"+NameList[i]+".sam"
 
 
-	commend="bowtie2 -p 8 -x /media/yubin/Alpha/sRNAProject/ReferenceGenome/L6sRNA150bp -k 1 -U " + InputName + " --n-ceil L,0,0.25 -S " + OutputName
+	commend="bowtie2 -p 8 -x /media/yubin/Alpha/sRNAProject/referenceGenome/L6sRNA150bp -k 1 -U " + InputName + " --n-ceil L,0,0.25 -S " + OutputName
 	print commend
 	process=subprocess.Popen(commend,shell=True,stdout=subprocess.PIPE)
 	process.wait()
