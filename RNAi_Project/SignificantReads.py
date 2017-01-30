@@ -18,6 +18,7 @@ SignificantReadsOutput=infile[1].strip("-counts.txt") + "-significantreads.txt"
 WholeReadsFastaOutput=infile[1].strip("-counts.txt") + "-wholereads.fa"
 SignificantReadsFastaOutput=infile[1].strip("-counts.txt") + "-significantreads.fa"
 PadjustThreshold=0.05
+FoldChangeThreshold=1
 ControlDic = {}
 TotalControlLineNumber=0
 TotalCaseLineNumber=0
@@ -54,13 +55,13 @@ stop = timeit.default_timer()
 print "Time used: ", stop - start,    #
 print "\nCalculating P adjust"
 
-P_adjustList = Rstats.p_adjust(FloatVector(PvalueList), method = 'fdr')
+P_adjustList = Rstats.p_adjust(FloatVector(PvalueList), method = 'bonferroni')
 OutputLineNumbrt = 0
 SignificantReadsNumber = 0
 
 with open(infile[1],"r") as CaseFile, open (WholeReadsOutput,"w+") as OutputFile1, open (SignificantReadsOutput,"w+") as OutputFile2,open (WholeReadsFastaOutput,"w+") as OutputFile3,open (SignificantReadsFastaOutput,"w+") as OutputFile4 :
-	OutputFile1.writelines('Reads\tCaseReadNumber\tControlReadNumber\tTotalCaseReadsNumber\tTotalControlLineNumber\tOddsRatio\tPvalue(fisher)\tP.adjust(fdr)\n')
-	OutputFile2.writelines('Reads\tCaseReadNumber\tControlReadNumber\tTotalCaseReadsNumber\tTotalControlLineNumber\tOddsRatio\tPvalue(fisher)\tP.adjust(fdr)\n')
+	OutputFile1.writelines('Reads\tCaseReadNumber\tControlReadNumber\tTotalCaseReadsNumber\tTotalControlLineNumber\tOddsRatio\tPvalue(fisher)\tP.adjust(bonferroni)\n')
+	OutputFile2.writelines('Reads\tCaseReadNumber\tControlReadNumber\tTotalCaseReadsNumber\tTotalControlLineNumber\tOddsRatio\tPvalue(fisher)\tP.adjust(bonferroni)\n')
 	for Line in CaseFile:
 		ElementList = Line.strip("\n").split("\t")
 		Reads = ElementList[0]
@@ -69,6 +70,7 @@ with open(infile[1],"r") as CaseFile, open (WholeReadsOutput,"w+") as OutputFile
 			ControlCounts = 0
 		else:
 			ControlCounts = ControlDic[Reads]
+			FoldChange=float(CaseCounts)/float(ControlCounts)
 		FastaName='>' + infile[1][0] + str(OutputLineNumbrt)
 		OutputFile1.writelines('%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' % (Reads,CaseCounts,ControlCounts,TotalCaseLineNumber,TotalControlLineNumber,OddsratioList[OutputLineNumbrt],PvalueList[OutputLineNumbrt],P_adjustList[OutputLineNumbrt]))
 		OutputFile3.writelines('%s\n%s\n' % (FastaName, Reads))
