@@ -20,7 +20,7 @@ with open(infile[0]) as inputfile:
 		if array[5]=="125M":
 			NoIndelLineNumber+=1
 			Reads=array[9]
-			Target=Reads[24:42]
+			Target=Reads[24:43]
 			if "N" not in Target:
 				OutputLineNumber+=1
 				OutputContent=Target+"\n"

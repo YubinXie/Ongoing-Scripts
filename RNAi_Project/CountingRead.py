@@ -22,10 +22,13 @@ with open(infile[0]) as InputFile:
 			ReadsDic[Line]+=1
 
 with open (infile[1], "w+") as OutputFile:
+	OutputLine=0
 	for key, value in ReadsDic.items():
-		OutputFile.writelines('%s\t%s\n' % (key,value))
+		if value>=2:
+			OutputFile.writelines('%s\t%s\n' % (key,value))
+			OutputLine+=1
 		ReadsNumber = ReadsNumber + value
 
 stop = timeit.default_timer()
-print "Done; \nInputfile line number:", InputReadsNumber, "\nCount reads number in output file: ", ReadsNumber,"\nOutputfile line number", len(ReadsDic)
+print "Done; \nInputfile line number:", InputReadsNumber, "\nCount reads number in output file: ", ReadsNumber,"Total Reads",len(ReadsDic.items()) ,"\nOutputfile line number (reads>=2)", OutputLine
 print "Time used: ", stop - start,    	
