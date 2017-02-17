@@ -51,7 +51,7 @@ with open (CaseFile,"r") as openCaseFile :
 		else:
 			ControlGeneCounts=int(ControlDic[Gene])
 		if CaseGeneCounts > ControlGeneCounts:
-			print "CaseGeneCounts > ControlGeneCounts"
+			print Gene,"CaseGeneCounts > ControlGeneCounts"
 			BinormalPvalue=1
 		else:
 			BinormalPvalue=stats.binom_test(CaseGeneCounts,ControlGeneCounts,Pvalue)
@@ -79,7 +79,7 @@ with open (CaseFile,"r") as openCaseFile, open (OutputFile1,"w+") as openOutputF
 		BinormalPvalue=PvalueList[i]
 		Padjust=P_adjustList[i]
 		if Gene in ReferenceDic:
-			Information=ReferenceDic[Gene].strip("\n")
+			Information=ReferenceDic[Gene].strip("\n").replace('"',"").replace('gene_name ',"").replace('gene_type ',"")
 		else:
 			Information="NA"
 			print "no information"

@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"c",
+				"count"
+			],
+			[
+				"op",
+				"openInputFile2"
+			],
+			[
+				"in",
+				"InputFile1"
+			],
+			[
+				"open",
+				"openInputFile1"
+			],
+			[
+				"In",
+				"InputFile1"
+			],
+			[
+				"Fi",
+				"File2GeneID"
+			],
+			[
+				"g",
+				"File1Gene"
+			],
+			[
+				"P",
+				"Pvalue"
+			],
+			[
+				"Open",
+				"openInputfile1"
+			],
+			[
 				"i",
 				"i"
 			],
@@ -32,16 +68,8 @@
 				"GeneID"
 			],
 			[
-				"op",
-				"openCaseFile"
-			],
-			[
 				"COn",
 				"ControlDic"
-			],
-			[
-				"open",
-				"openControlFile"
 			],
 			[
 				"GENE",
@@ -96,20 +124,12 @@
 				"OutputFolder"
 			],
 			[
-				"In",
-				"InputLineNumber"
-			],
-			[
 				"IN",
 				"InputLineNumber"
 			],
 			[
 				"R",
 				"ReadsDic"
-			],
-			[
-				"in",
-				"inputfile"
 			],
 			[
 				"COm",
@@ -301,16 +321,7 @@
 			"file": "/home/yubin/Dropbox/R/sRNA-DrugV.Rmd",
 			"settings":
 			{
-				"buffer_size": 8646,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "test.py",
-			"settings":
-			{
-				"buffer_size": 395,
+				"buffer_size": 8636,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -327,7 +338,7 @@
 			"file": "Generate-Xmer.py",
 			"settings":
 			{
-				"buffer_size": 759,
+				"buffer_size": 841,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -342,29 +353,16 @@
 			}
 		},
 		{
-			"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/11mer.fa",
+			"file": "Generate-unique-read.py",
 			"settings":
 			{
-				"buffer_size": 240,
+				"buffer_size": 949,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/yubin/Dropbox/Linux/Files/RNAi/>test",
-			"settings":
-			{
-				"buffer_size": 130,
-				"encoding": "UTF-8",
-				"line_ending": "Unix",
-				"name": ">test"
-			}
-		},
-		{
-			"contents": "import re;\nimport os\nimport sys, optparse\nimport subprocess\n\nusage=\"python xx.py directory function\"\nparser = optparse.OptionParser(usage=usage)\noptions, infile = parser.parse_args()\nFileName = os.listdir(infile[0])\nprint FileName \nos.chdir(infile[0])\nGroupName=[]\nNameList=[]\nInputName=\"\"\nOutputName=\"\"\nFunction=infile[1]\n############################\ndef main():\n####Choose One#######\n\tif \"mapping\" in Function: \n\t\tMapping()\n\tif \"extraction\" in Function: \n\t\tExtraction()\n\tif \"counting\" in Function:\n\t\tCounting()\n\tif \"countingmerged\" in Function:\n\t\tCounting_Merged()\n#####################\n\n\tMainPart()\n\n\ndef Mapping():\n\tglobal FilePattern,OutputFolder, OutputType, CommendLine1, CommendLine2\n\tFilePattern=\".fastq.gz\"\n\tOutputFolder=\"sam\"\n\tOutputType=\".sam\"\n\tCommendLine1=\"bowtie2 -p 8 -x /media/yubin/Alpha/sRNAProject/referenceGenome/drug_ref2 -k 1 -U \"\n\tCommendLine2 = \" --n-ceil L,0,0.25 -S \"\n\ndef Extraction():\n\tglobal FilePattern,OutputFolder, OutputType, CommendLine1, CommendLine2\n\tFilePattern=\".sam\"\n\tOutputFolder=\"txt\"\n\tOutputType=\".txt\"\n\tCommendLine1=\"python /media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/scripts/Extraction.py \"\n\tCommendLine2=\" \"\n\ndef Counting():\n\tglobal FilePattern, OutputFolder,OutputType, CommendLine1, CommendLine2\n\tFilePattern=\".txt\"\n\tOutputFolder=\"counts\"\n\tOutputType=\"-counts.txt\"\n\tCommendLine1=\"python /home/yubin/Dropbox/Linux/scripts/RNAi_Project/CountingRead.py \"\n\tCommendLine2=\" \"\n\ndef Counting_Merged():\n\tglobal FilePattern, OutputFolder,OutputType, CommendLine1, CommendLine2\n\tFilePattern=\".txt\"\n\tOutputFolder=\"counts\"\n\tOutputType=\"-counts.txt\"\n\tCommendLine1=\"python /home/yubin/Dropbox/Linux/scripts/RNAi_Project/Counting_CountRead.py \"\n\tCommendLine2=\" \"\n\ndef MainPart():\n\tglobal FilePattern, OutputType, CommendLine1,CommendLine2\n\t############################\n\ti=1\n\t#####Catch the main sample name###### \n\tfor File in FileName: \n\t\tline2=re.search('(?P<h1>.+?)'+FilePattern,File)\n\t\tif(line2):\n\t\t\tname=line2.group(\"h1\")\n\t\t\tif name not in NameList:\n\t\t\t\tNameList.append(name)\n\t\t\t\tGroupName.append(File)\n\t\telse: \n\t\t\tprint \"no pattern found in this file:\", File\n\t\ti=i+1\n\tprint NameList\n\t\n\t####################################\n\t\n\t####################################\n\ti=0\n\tInitialCommend=\"mkdir -p \" + OutputFolder\n\tprocess=subprocess.Popen(InitialCommend,shell=True,stdout=subprocess.PIPE)\n\tprocess.wait()\n\tprint process.returncode\n\t\n\tfor sample in NameList:\n\t\tInputName = GroupName[i]\n\t\tOutputName= OutputFolder + \"/\"+NameList[i] + OutputType\n\t\tcommend=CommendLine1 + InputName + CommendLine2 + OutputName\n\t\tprint commend\n\t\tprocess=subprocess.Popen(commend,shell=True,stdout=subprocess.PIPE)\n\t\tprocess.wait()\n\t\tprint process.stdout.readlines()\n\t\ti=i+1\n\t##########################\n\t\n\nif __name__ == '__main__':\n\tmain()",
 			"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/scripts/MultiTask.py",
-			"file_size": 2757,
-			"file_write_time": 131303995221002936,
 			"settings":
 			{
 				"buffer_size": 2757,
@@ -373,10 +371,7 @@
 			}
 		},
 		{
-			"contents": "import re;\nimport os\nimport sys, optparse\n\nusage=\"python xx.py InputFile OutputFile\"\nparser = optparse.OptionParser(usage=usage)\noptions, infile = parser.parse_args()\nOutputFile=open(infile[1],'w+')\n\nInputLineNumber=0\nNoIndelLineNumber=0\nOutputLineNumber=0\n\nwith open(infile[0]) as inputfile:\n\tfor line in inputfile:\n\t\tarray=line.split(\"\\t\")\n\t\tif len(array)<=9:\n\t\t\tcontinue\n\t\tInputLineNumber+=1\n\t\tif array[5]==\"100M\":   #125M for BGI data#\n\t\t\tNoIndelLineNumber+=1\n\t\t\tReads=array[9]\n\t\t\tTarget=Reads[24:43]\n\t\t\tif \"N\" not in Target:\n\t\t\t\tOutputLineNumber+=1\n\t\t\t\tOutputContent=Target+\"\\n\"\n\t\t\t\tOutputFile.write(OutputContent)\nprint infile[0], \"InputLineNumber:\",InputLineNumber, \"NoIndelLineNumber:\",NoIndelLineNumber,\"OutputLineNumber:\", OutputLineNumber,\"OutputLineNumber/InputLineNumber:\",float(OutputLineNumber)/float(InputLineNumber)\nOutputFile.close()",
 			"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/scripts/Extraction.py",
-			"file_size": 851,
-			"file_write_time": 131303869802262558,
 			"settings":
 			{
 				"buffer_size": 851,
@@ -385,25 +380,11 @@
 			}
 		},
 		{
-			"contents": "import re;\nimport os\nimport sys, optparse\nimport subprocess\n\nusage=\"python xx.py infile\"\nparser = optparse.OptionParser(usage=usage)\noptions, infile = parser.parse_args()\nFileName = os.listdir(infile[0])\nprint FileName \nos.chdir(infile[0])\n#sum=0\nGroupName=[]\nNameList=[]\n############################\n\n############################\ni=1\n#####Catch the main sample name###### \nfor File in FileName: \n\tline2=re.search('(?P<h1>.+?)_001.fastq.gz',File)\n\tif(line2):\n\t\tname=line2.group(\"h1\")\n\t\tif name not in NameList:\n\t\t\tNameList.append(name)\n\t\t\tGroupName.append(File)\n\telse: \n\t\tprint \"no pattern found in this file:\", File\n\ti=i+1\nprint NameList\n\n####################################3\n\n#######cat differnt lanes into one file########\ni=0\ncommend=\"mkdir -p sam\"\n\nprocess=subprocess.Popen(commend,shell=True,stdout=subprocess.PIPE)\nprocess.wait()\nprint process.returncode\n\nfor sample in NameList:\n\tInputName = GroupName[i]\n\tOutputName=\"sam/\"+NameList[i]+\".sam\"\n\n\n\tcommend=\"bowtie2 -p 8 -x /media/yubin/Alpha/sRNAProject/referenceGenome/L6sRNA150bp -k 1 -U \" + InputName + \" --n-ceil L,0,0.25 -S \" + OutputName\n\tprint commend\n\tprocess=subprocess.Popen(commend,shell=True,stdout=subprocess.PIPE)\n\tprocess.wait()\n\tprint process.returncode\n\t\n\ti=i+1\n##########################\n\n",
 			"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/scripts/Mapping.py",
-			"file_size": 1264,
-			"file_write_time": 131302161114136620,
 			"settings":
 			{
 				"buffer_size": 1264,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": ">target\ngctttatatatcttgtggaaaggaATTTaaaaaNNNNNNNNNNNNNNNNNNNtttttAAATtggtctcatacagaacttataagattcccaaatccaaagacatttcacgtttatggtgatttcccagaacacatagcgacatgca\naatattgcagggcgccactcccctgtccctcacagccatcttcctgccagggcgcacgcgcgctgggtgttcccgcctagtgacactgggcccgcgattccttggagcgggttgatgacgtcagcgttcgaattaa\n",
-			"file": "/media/yubin/Alpha/sRNAProject/drug_resistance_from_Yuwen/ref.fasta",
-			"file_size": 292,
-			"file_write_time": 131298501288453960,
-			"settings":
-			{
-				"buffer_size": 292,
 				"line_ending": "Unix"
 			}
 		},
@@ -420,7 +401,34 @@
 			"file": "Genome_HTSeq/Binormal_HTseq.py",
 			"settings":
 			{
-				"buffer_size": 2701,
+				"buffer_size": 2772,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Contain.py",
+			"settings":
+			{
+				"buffer_size": 1064,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Count-Reads.py",
+			"settings":
+			{
+				"buffer_size": 344,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/eXP_MINE_Zifeng/overlap.py",
+			"settings":
+			{
+				"buffer_size": 1108,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -429,7 +437,7 @@
 			"file": "CountingHits.py",
 			"settings":
 			{
-				"buffer_size": 2101,
+				"buffer_size": 2103,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -556,11 +564,68 @@
 	},
 	"file_history":
 	[
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/All.15mer.3mis.right.genome.out/All.15mer.3mis.right.genome.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/All.15mer.3mis.genome.right.new.out/all.15mer.3mis.right.genome.new.txt",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/15mer3misgenomeNewDrivergene_rightside2-16/Enrichment_DirverGene.py",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/All.15mer.3mis.genome.right.new.out/align_summary.txt",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/15mer3misgenomeNewDrivergene_rightside2-16/drugv.15mer.3mis.right.genome.new_Binormal.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/yubinrightDrugV.3mis.genome.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/yubinrightDrugV.3mis.genome_Binormal.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/drugv.15mer.3mis.right.genome.new_Binormal.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/test.3mis.genome.test3.out/test.sam",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Drugv.15mer.3mis.genome.new.out/drugv.15mer.3mis.right.genome.new.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/drugvcase-rightside-enriched15mer.fa",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/test.3mis.genome.test4.out/test.sam",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/test.3mis.genome.test6.out/test.sam",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/test.3mis.genome.test5.out/test.sam",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/test-15mer.fa",
+		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/test.py",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/test.3mis.genome.test7.out/test.sam",
+		"/media/yubin/Alpha/sRNAProject/genome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/all-15mer.fa",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/eXP_MINE_Zifeng/Enrichment_DirverGene.py",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/All.15mer.3mis.right.genome_Binormal.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/MergedRead/counts/all-count/all-19mer.fa",
+		"/home/yubin/Dropbox/Linux/Files/RNAi/Output/drugvcase-rightside-enriched15mer.fa",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/eXP_MINE_Zifeng/drugVMEFgenelist_genome.txt",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_Drivergene_rightside2-1/Enrichment_DirverGene.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_12mer2misgenomeDrivergene_rightside2-9/Enrichment_DirverGene.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_12merDrivergene_rightside2-9/Enrichment_DirverGene.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_15mer3misgenomeDrivergene_rightside2-9/Enrichment_DirverGene.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_15mer3misgenomeDrivergene_rightside2-9/yubinrightDrugV.3mis.genome_Binormal.txt",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_12merDrivergene_rightside2-9/DrugV.12mer.3mis.right.genome_Binormal.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/MergedRead/counts/all-count/all-12mer.fa",
+		"/home/yubin/Desktop/People — Ding Lab.html",
+		"/home/yubin/Desktop/Publications — Ding Lab.html",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/MergedRead/counts/all-count/all-unique-counts.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/MergedRead/counts/drugvcontrol-counts-counts.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/MergedRead/counts/all-count/all-counts.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/MergedRead/counts/drugvcase-counts-counts.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/MergedRead/drugvcase-counts.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/drugvcase-rightside-enriched12mer.fa",
+		"/home/yubin/Dropbox/Linux/Files/RNAi/Output/drugvcase-rightside-enriched12mer.fa",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/eXP_MINE_Zifeng/yubinrightDrugV.3mis.genome_Binormal.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/align_summary.txt",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/logs/segment_juncs.log",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/logs/reports.log",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/logs/tophat.log",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/logs/run.log",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/yubin15mer3mis.sort.sam",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_Drivergene_Twoside2-1/Enrichment_DirverGene.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_Drivergene_rightside2-1/yubinrightDrugV.3mis.genome_Binormal.txt",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/eXP_MINE_Zifeng/drugVMEFgenelist_genome.xlsx",
+		"/home/yubin/Dropbox/Linux/Files/RNAi/>test",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/11mer.fa",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_Drivergene_2-1/Enrichment_DirverGene.py",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Zifeng/DrugV.15mer.fasta",
+		"/media/yubin/Alpha/sRNAProject/drug_resistance_from_Yuwen/ref.fasta",
 		"/home/yubin/Dropbox/Linux/Files/RNAi/Output/drugvcase-rightside-enriched19mer.fa",
+		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/Enrichment_DirverGene.py",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/drugvcase-twoside-enriched15mer.fa",
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubin.drugV.15mer.3mis.genome.out/yubinDrugV.3mis.genome_Binormal.txt",
+		"/home/yubin/Dropbox/Linux/Files/RNAi/Output/drugvcase-rightside-enriched19mer12mer.fa",
 		"/home/yubin/Dropbox/Linux/Files/RNAi/Output/drugvcase-twoside-enriched19mer.fa",
 		"/home/yubin/Dropbox/Linux/Files/RNAi/drugvcase-wholereads.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/11mer.fa",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Zifeng/DrugV.15mer.fasta",
 		"/home/yubin/Dropbox/Linux/Files/RNAi/drugvcase-twosidesignificantreads.txt",
 		"/home/yubin/Dropbox/Linux/Files/RNAi/drugvcase-rightsidesignificantreads.txt",
 		"/home/yubin/Dropbox/Linux/Files/RNAi/drugvcase-wholereads.fa",
@@ -626,64 +691,7 @@
 		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/NgeneNhits.py",
 		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta2.out/align_summary.txt",
 		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta2.out/logs/tophat.log",
-		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta2.out/logs/run.resume0.log",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist.control",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/probelist.drug",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist.drug",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelistall/genelist.Adrug.bn",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist.drug.bnm",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist.A62",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/probelist.control",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/bionomialprep_probe.pl",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/bionomialprep_gene.pl",
-		"/media/yubin/Alpha/sRNAProject/srna/DrugV.15mer.fasta.out/logs/tophat.log",
-		"/media/yubin/Alpha/sRNAProject/srna/DrugV.15mer.fasta.out/DrugV_15mer_Transcriptlist.txt",
-		"/media/yubin/Alpha/sRNAProject/srna/DrugV.15mer.fasta",
-		"/media/yubin/Alpha/sRNAProject/srna/bionomialtestprep/genelist",
-		"/media/yubin/Alpha/sRNAProject/srna/DrugV.15mer.fasta.out/DrugV_15mer_Probelist.txt",
-		"/media/yubin/Alpha/sRNAProject/srna/gencode.v24.transcripts.fa",
-		"/media/yubin/Alpha/sRNAProject/srna/DrugV.15mer.fasta.out/DrugV_15mer.sam",
-		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/CountingRead.py",
-		"/home/yubin/MI_HeartExpression.txt",
-		"/home/yubin/MIdata_heartexpression.txt",
-		"/home/yubin/Dropbox/Linux/scripts/Annotation_Project/GCTexpression_annotation.py",
-		"/home/yubin/test.txt",
-		"/media/yubin/Alpha/MIdata/GTEx_Analysis_v6p_RNA-seq_RNA-SeQCv1.1.8_gene_median_rpkm.gct",
-		"/home/yubin/tools/annovar/CCTD_exon_constarin.log",
-		"/media/yubin/Alpha/sRNAProject/sRNA/test19.fasta",
-		"/media/yubin/Alpha/sRNAProject/sRNA/A62.15.fasta",
-		"/media/yubin/Alpha/sRNAProject/sRNA/A62.17.fasta",
-		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta.out/logs/reports.samtools_sort.log5",
-		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta.out/logs/reports.merge_bam.log",
-		"/media/yubin/Alpha/sRNAProject/sRNA/controlseq.fasta.out/probelist",
-		"/media/yubin/Alpha/sRNAProject/sRNA/controlseq.fasta.out/genelist",
-		"/media/yubin/Alpha/sRNAProject/sRNA/DrugV.15mer.fasta",
-		"/home/yubin/tools/annovar/CCTDTRes_GQPL25_vep_proc_forShih-chen.txt",
-		"/home/yubin/tools/annovar/CCTD.txt",
-		"/home/yubin/tools/annovar/CCTD.avinput",
-		"/home/yubin/tools/annovar/CCTD_exon_constarin.hg19_multianno.csv",
-		"/home/yubin/tools/annovar/CCTD.vcf",
-		"/home/yubin/tools/annovar/humandb/Exon_Conservation.sort.bed",
-		"/home/yubin/tools/annovar/humandb/Exon_Conservation.bed",
-		"/home/yubin/tools/annovar/CCTD.hg19_multianno.csv",
-		"/home/yubin/Dropbox/R/CCTD.avinput",
-		"/home/yubin/tools/annovar/mySPlitMIdata.avinput",
-		"/home/yubin/Dropbox/Linux/Files/CCTDTRes_GQPL25_vep_proc_forShih-chen.txt",
-		"/media/yubin/Alpha/sRNAProject/rawData/L6RawData/sam/txt/group/counts/A1-4-19mer-wholereads.txt",
-		"/media/yubin/Alpha/sRNAProject/rawData/L6RawData/sam/txt/group/counts/A1-4-19mer-significantreads.fa",
-		"/media/yubin/Alpha/sRNAProject/rawData/L6RawData/sam/txt/group/counts/A-statis.txt",
-		"/media/yubin/Alpha/sRNAProject/rawData/L6RawData/sam/txt/A1-19mer.txt",
-		"/media/yubin/Alpha/sRNAProject/rawData/L6RawData/sam/txt/group/B1-3-19mer-counts.txt",
-		"/media/yubin/Alpha/sRNAProject/rawData/L6RawData/sam/txt/group/A1-4-19mer-counts-counts.txt",
-		"/media/yubin/Alpha/sRNAProject/rawData/L6RawData/sam/txt/group/A1-4-19mer-counts.txt",
-		"/home/yubin/Dropbox/Linux/scripts/Annotation_Project/MeanTxt.py",
-		"/media/yubin/Alpha/sRNAProject/RawData/L6RawData/sam/txt/A1-4-19mer.txt",
-		"/media/yubin/Alpha/sRNAProject/RawData/L6RawData/sam/txt/FCC7N9BANXX_L6_CWHSE15100026-C.txt",
-		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/extract19mer.py",
-		"/media/yubin/Alpha/sRNAProject/RawData/L6RawData/sam/FCC7N9BANXX_L6_CWHSE15100026-C_19mer.txt",
-		"/media/yubin/Alpha/sRNAProject/RawData/L6RawData/sam/FCC7N9BANXX_L6_CWHSE15100029-C.sam",
-		"/home/yubin/Dropbox/Linux/scripts/HMC_Project/QualityFilter.py",
-		"/media/yubin/Alpha1/sample/removed_sample.txt"
+		"/media/yubin/Alpha/sRNAProject/srna/trans_15mer_3mis/controlseq.15mer.fasta2.out/logs/run.resume0.log"
 	],
 	"find":
 	{
@@ -701,6 +709,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"data-badge-type",
+			" ",
+			"gene_type ",
+			"gene_name ",
+			"\"",
+			" ",
+			"\"",
+			"gene_type ",
+			"gene_name ",
+			"5e",
 			"TTCGTACGAACTAAGCTTT",
 			"TGCTATTTTTGGAGTGTAA",
 			"GAGTGTGATCATTTGACGA",
@@ -818,17 +836,7 @@
 			"PP2Bi",
 			"PP2B",
 			"197",
-			"PP2BI",
-			"PP2B",
-			"CAMr",
-			"CAMT",
-			"CART",
-			"PP2B",
-			"pka",
-			"konPP2B",
-			"autoCaMKIIp=4.6E+7",
-			"4.6",
-			"autoCaMKIIp"
+			"PP2BI"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -836,6 +844,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
 			"ReferenceFile",
 			"SamFile",
 			"OutputFile2",
@@ -854,7 +863,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 15,
 			"sheets":
 			[
 				{
@@ -880,10 +889,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1482.0,
+						"translation.y": 560.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -899,8 +908,8 @@
 						"selection":
 						[
 							[
-								417,
-								417
+								4082,
+								4082
 							]
 						],
 						"settings":
@@ -908,10 +917,10 @@
 							"syntax": "Packages/R-Box/syntax/R Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 247.0,
+						"translation.y": 722.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -920,15 +929,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8646,
+						"buffer_size": 8636,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6425,
-								6425
+								7676,
+								7676
 							]
 						],
 						"settings":
@@ -936,42 +945,14 @@
 							"syntax": "Packages/R-Box/syntax/R Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 4104.0,
+						"translation.y": 4617.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "test.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 395,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								321,
-								321
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "CountingRead.py",
 					"semi_transient": false,
 					"settings":
@@ -983,8 +964,186 @@
 						"selection":
 						[
 							[
-								933,
-								933
+								569,
+								569
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Generate-Xmer.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 841,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								440,
+								440
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Counting_CountRead.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 998,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								731,
+								731
+							],
+							[
+								959,
+								959
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Generate-unique-read.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 949,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								105,
+								105
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/scripts/MultiTask.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2757,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								42,
+								42
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 570.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/scripts/Extraction.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 851,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 57.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/scripts/Mapping.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1264,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								203,
+								203
 							]
 						],
 						"settings":
@@ -1000,237 +1159,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "Generate-Xmer.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 759,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								574,
-								574
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "Counting_CountRead.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 998,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								426,
-								426
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/11mer.fa",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 240,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								240,
-								240
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 361.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/home/yubin/Dropbox/Linux/Files/RNAi/>test",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 130,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								118,
-								118
-							]
-						],
-						"settings":
-						{
-							"auto_name": ">test",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/scripts/MultiTask.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2757,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								546,
-								546
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 228.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
 					"buffer": 10,
-					"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/scripts/Extraction.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 851,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								414,
-								414
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/scripts/Mapping.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1264,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								638,
-								638
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 207.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "/media/yubin/Alpha/sRNAProject/drug_resistance_from_Yuwen/ref.fasta",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 292,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								292,
-								292
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
 					"file": "Binormal.py",
 					"semi_transient": false,
 					"settings":
@@ -1242,8 +1171,8 @@
 						"selection":
 						[
 							[
-								286,
-								286
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1255,24 +1184,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 11,
 					"file": "Genome_HTSeq/Binormal_HTseq.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2701,
+						"buffer_size": 2772,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2131,
-								2131
+								1533,
+								1533
 							]
 						],
 						"settings":
@@ -1281,10 +1210,96 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 684.0,
+						"translation.y": 798.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Contain.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1064,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								255,
+								255
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "Count-Reads.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 344,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								152,
+								152
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/eXP_MINE_Zifeng/overlap.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1108,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1108,
+								1108
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 115.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -1293,15 +1308,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2101,
+						"buffer_size": 2103,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								617,
-								617
+								1326,
+								1326
 							]
 						],
 						"settings":
@@ -1310,10 +1325,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 399.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1341,7 +1356,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -1368,7 +1383,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 17,
 					"type": "text"
 				}
 			]

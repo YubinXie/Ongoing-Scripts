@@ -4,17 +4,17 @@ import sys, optparse
 import timeit;
 start = timeit.default_timer()
 
-usage="python xx.py Inputfile X-mer"
+usage="python xx.py Inputfile X(-mer)"
 parser = optparse.OptionParser(usage=usage)
 options, infile = parser.parse_args()
 
 Xmer=int(infile[1])
-OutputFileName=infile[0].strip("19mer.fa") + str(Xmer)+"mer.fa"
+OutputFileName=infile[0].rstrip("19mer.fa") + str(Xmer)+"mer.fa"
 ReadsNumber=0
 
 with open(infile[0]) as InputFile, open (OutputFileName, "w+") as OutputFile:
 	InputReadsNumber=0
-	OutputFile.writelines('>TEST\N\n')
+	OutputFile.writelines('>TEST\n')
 	OutputFile.writelines("AAAAAAAAAAAAAAAAAAAA\n")
 	for Line in InputFile:
 		InputReadsNumber+=1

@@ -20,35 +20,45 @@ except IOError:
 	print "openning input file failed"
 
 
+
+#UniqueGeneCountDic={}
 transCountDic={}
 probeCountDic={}
-#UniqueGeneCountDic={}
 GeneName={}
 
 with open (SamFile,"r") as openSamFile :
 	for samline in openSamFile:
+		transDic={}
+		probeDic={}
+		GeneName={}
 		if "@" in samline:
 			continue 
 		content=samline.strip("\n").split("\t")
-		probe=content[0]
 		trans=content[2]
-		#read=content[9]
 		NameList=trans.split("|")
 		GeneID=NameList[1]
-		GeneName[GeneID]=NameList[5] + "\t" + NameList[7]
 
 		if trans not in transCountDic:
 			transCountDic[trans] = 1
 		else:
 			transCountDic[trans] = transCountDic[trans]+1
+				
+		print "Trans Done\n"
+
 		if GeneID not in probeCountDic:
-			#UniqueGeneCountDic[GeneID] = []
-			#UniqueGeneCountDic[GeneID].append(read)
-			probeCountDic[GeneID]={}
-			probeCountDic[GeneID][probe]=None
-		else:
-			#UniqueGeneCountDic[GeneID].append(read)
-			probeCountDic[GeneID][probe]=None
+			GeneName[GeneID]=NameList[5] + "\t" + NameList[7]
+			probelist =[]
+			with open (SamFile,"r") as openSamFile3 :
+				for samline in openSamFile3:
+					if "@" in samline:
+						continue 
+					content=samline.strip("\n").split("\t")
+					subGeneID=NameList[1]
+					subprobe=content[0]
+					if subGeneID == GeneID:
+						probelist.append(subprobe)
+				probeCountDic[GeneID]=len(probelist)
+
 
 print "done part 1"
 stop = timeit.default_timer()
@@ -71,8 +81,7 @@ with open(OutputFile3, "w+") as openOutputFile3:
 		#GeneCount=len(set(UniqueGeneCountDic[gene]))
 		Genename=GeneName[gene]
 		#openOutputFile2.write("%s\t%s\n" % (gene,GeneCount))
-		probeCount=len((probeCountDic[gene]))
-		#probeCount=len(set(probeCountDic[gene]))
+		probeCount=probeCountDic[gene]
 		openOutputFile3.write("%s\t%s\t%s\n" % (gene,Genename,probeCount))
 
 
