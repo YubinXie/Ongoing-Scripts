@@ -13,7 +13,7 @@ options, infile = parser.parse_args()
 
 ControlFile = infile[0]
 CaseFile = infile[1]
-OutputFile1=CaseFile.strip(".txt").split("/")[-1] + "_Binormal.csv" 
+OutputFile1=CaseFile.strip(".txt").split("/")[-1] + "_Binormal.txt" 
 Pvalue=float(infile[2])
 
 with open (ControlFile,"r") as openControlFile:

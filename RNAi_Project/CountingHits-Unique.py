@@ -9,8 +9,8 @@ parser = optparse.OptionParser(usage=usage)
 options, infile = parser.parse_args()
 SamFile=infile[0]
 #ReferenceFile=infile[1]
-OutputFile1=SamFile.rstrip(".sam") + "_Transcriptlist.txt" 
-OutputFile3=SamFile.rstrip(".sam") + "_GeneCountbyProbelist.txt"
+OutputFile1=SamFile.rstrip(".sam") + "_Transcriptlist-Unique.txt" 
+OutputFile3=SamFile.rstrip(".sam") + "_GeneCountbyProbelist-Unique.txt"
 #OutputFile2=SamFile.strip(".sam") + "_GeneCountbyReadlist.txt" 
 
 try:
@@ -24,6 +24,8 @@ transCountDic={}
 probeCountDic={}
 #UniqueGeneCountDic={}
 GeneName={}
+UniqueCount=0
+TotalCount=0
 
 with open (SamFile,"r") as openSamFile :
 	for samline in openSamFile:
@@ -33,9 +35,13 @@ with open (SamFile,"r") as openSamFile :
 		probe=content[0]
 		trans=content[2]
 		#read=content[9]
-		
+		TotalCount+=1
+		if "NH:i:1" != content[19]:
+			continue
+		UniqueCount+=1
 		NameList=trans.split("|")
 		GeneID=NameList[1]
+		#print content[19]
 		if GeneID not in GeneName:
 			GeneName[GeneID]=NameList[5] + "\t" + NameList[7]
 		else:
@@ -83,5 +89,6 @@ with open(OutputFile3, "w+") as openOutputFile3:
 
 
 print "done part 2"
+print "Unique Count:", UniqueCount,"\nTotal Conut:", TotalCount,"\nRatio:",float(UniqueCount)/float(TotalCount)
 stop = timeit.default_timer()
 print stop - start, "seconds"
