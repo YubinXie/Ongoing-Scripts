@@ -56,7 +56,7 @@ with open (CaseFile,"r") as openCaseFile :
 		else:
 			BinormalPvalue=stats.binom_test(CaseGeneCounts,ControlGeneCounts,Pvalue)
 		PvalueList.append(BinormalPvalue)
-
+		#print CaseGeneCounts,ControlGeneCounts,Pvalue,BinormalPvalue
 
 P_adjustList = Rstats.p_adjust(FloatVector(PvalueList), method = 'fdr')
 
