@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"C",
+				"ColofResultQvalue"
+			],
+			[
+				"E",
+				"ElementsList"
+			],
+			[
+				"x",
+				"x"
+			],
+			[
 				"Gene",
 				"GeneID"
 			],
@@ -124,10 +136,6 @@
 				"ExpressionArray"
 			],
 			[
-				"C",
-				"ControlCounts"
-			],
-			[
 				"Con",
 				"ControlDic"
 			],
@@ -194,10 +202,6 @@
 			[
 				"refere",
 				"ReferenceList"
-			],
-			[
-				"x",
-				"xlsx"
 			],
 			[
 				"Overlap",
@@ -343,23 +347,27 @@
 			}
 		},
 		{
-			"file": "/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/17mer3misGenomeNewtransDrivergene_rightside2-19/Enrichment-DriverGene.py",
+			"file": "Pipeline.py",
 			"settings":
 			{
-				"buffer_size": 4712,
+				"buffer_size": 3192,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "\n\npython ~/Dropbox/Linux/scripts/RNAi_Project/Generate-Xmer.py drugvcase-rightside-enriched19mer.fa 16\n\npython ~/Dropbox/Linux/scripts/RNAi_Project/Generate-Xmer.py all-19mer.fa 16\n\ntophat2 -N 3 --read-edit-dist 3 --num-thread 8 --max-multihits 10000 --report-secondary-alignments --GTF ../genome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf --transcriptome-index ../genome/gencode.v24.chr_patch_hapl_scaff.annotation --transcriptome-max-hits 10000 --transcriptome-only -o Drugv.16mer.3mis.genome.new.trans.out ../genome/GRCh38.genome drugvcase-rightside-enriched16mer.fa\n\ntophat2 -N 3 --read-edit-dist 3 --num-thread 8 --max-multihits 10000 --report-secondary-alignments --GTF ../genome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf --transcriptome-index ../genome/gencode.v24.chr_patch_hapl_scaff.annotation --transcriptome-max-hits 10000 --transcriptome-only -o All.16mer.3mis.genome.new.trans.out ../genome/GRCh38.genome all-16mer.fa \n\ncd Drugv.16mer.3mis.genome.new.trans.out/\n\nsamtools sort -o accepted_hits.sort.bam accepted_hits.bam\n\nsamtools view -o drugv.16mer.3mis.genome.new.trans.sam accepted_hits.sort.bam\n\ncd ../All.16mer.3mis.genome.new.trans.out\n\nsamtools sort -o accepted_hits.sort.bam accepted_hits.bam\n\n\n",
-			"file": "Pipeline.py",
-			"file_size": 0,
-			"file_write_time": 131320158913224666,
+			"file": "MultiTask.py",
 			"settings":
 			{
-				"buffer_size": 1229,
-				"encoding": "UTF-8",
+				"buffer_size": 2308,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Mapping.py",
+			"settings":
+			{
+				"buffer_size": 1259,
 				"line_ending": "Unix"
 			}
 		},
@@ -372,28 +380,19 @@
 			}
 		},
 		{
+			"file": "/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/test.py",
+			"settings":
+			{
+				"buffer_size": 501,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "Generate-Xmer.py",
 			"settings":
 			{
 				"buffer_size": 841,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Counting_CountRead.py",
-			"settings":
-			{
-				"buffer_size": 998,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Generate-unique-read.py",
-			"settings":
-			{
-				"buffer_size": 949,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -411,7 +410,7 @@
 			"file": "Genome_HTSeq/Binormal_HTseq.py",
 			"settings":
 			{
-				"buffer_size": 2772,
+				"buffer_size": 2835,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -457,15 +456,6 @@
 			"settings":
 			{
 				"buffer_size": 2227,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/test.py",
-			"settings":
-			{
-				"buffer_size": 150,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -577,6 +567,24 @@
 	},
 	"file_history":
 	[
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/srna/genome/test/DrugV.15mer.fasta.out/align_summary.txt",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/align_summary.txt",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/19mer3misGenomeNewtransDrivergene_rightside2-21/Enrichment-DriverGene-Feb21-V5.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/18mer3misGenomeNewtransDrivergene_rightside2-22/Enrichment-DriverGene-Feb21-V5.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/15mer3mistransDrivergene_rightside2-17-Gene/drugv.15mer.3mis.right_GeneCountbyProbelist-Unique_Binormal-2.txt",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/17mer3misGenomeNewtransDrivergene_rightside2-19/Enrichment-DriverGene.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/15mer3mistransDrivergene_rightside2-17-Gene/Enrichment-DriverGene-Feb21-V5-Basic.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/15mer3mistransDrivergene_rightside2-17-Gene/drugv.15mer.3mis.right_GeneCountbyProbelis_Binormal.txt",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/15mer3mistransDrivergene_rightside2-17-Gene/drugv.15mer.3mis.right_GeneCountbyProbelist-Unique_Binormal.txt",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/16mer3misGenomeNewtransDrivergene_rightside2-20/Enrichment-DriverGene-Feb21-V5.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/15mer3misgenomeNewDrivergene_rightside2-16/Enrichment-DriverGene-Feb21-V5.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/17mer3misGenomeNewtransDrivergene_rightside2-19/Enrichment-DriverGene-Feb21-V5.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/15mer3misgenomeNewDrivergene_rightside2-16/Enrichment-DriverGene-Feb21.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/16mer3misGenomeNewtransDrivergene_rightside2-20/Enrichment-DriverGene-Feb21.py",
+		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/Counting_CountRead.py",
+		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/Generate-unique-read.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/16mer3misGenomeNewtransDrivergene_rightside2-20/Enrichment-DriverGene.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/16mer3misGenomeNewtransDrivergene_rightside2-20/Enrichment-DriverGene 2.py",
 		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/11mer.fa",
 		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Contain.py",
 		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/scripts/Mapping.py",
@@ -676,7 +684,6 @@
 		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/Reads/counts/control-19mer-counts.txt",
 		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/QualityFilter.py",
 		"/home/yubin/Dropbox/Linux/Files/RNAi/drugvcase-counts-counts.txt",
-		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/Counting_CountRead.py",
 		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/scripts/MultiTask.py",
 		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/Read/counts/drugvcontrol_read1-counts.txt",
 		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/Read/counts/drugvcontrol_readBGI-counts.txt",
@@ -687,24 +694,7 @@
 		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/BGIDrugvCase/sam/txt/FCC7N9BANXX_L6_CWHSE15100023_1.txt",
 		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/Reads/drugvcontrol_read1.txt",
 		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/Extraction.py",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/DrugvControl/sam/txt/TH-1_ATCACG_L001_R1.txt",
-		"/home/yubin/Dropbox/Linux/scripts/Annotation_Project/CCTDdata/GCTexpression_annotation_MulCol.py",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/Test/sam/TH-7_ACTTGA_L001_R1_.sam",
-		"/media/yubin/Alpha/sRNAProject/referenceGenome/DrugVreference.rev.2.bt2",
-		"/media/yubin/Alpha/sRNAProject/referenceGenome/DrugVreference.rev.1.bt2",
-		"/media/yubin/Alpha/sRNAProject/referenceGenome/DrugVreference.3.bt2",
-		"/media/yubin/Alpha/sRNAProject/referenceGenome/DrugVreference.2.bt2",
-		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/Mapping.py",
-		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/MultiTask.py",
-		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/NgeneN.pl",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV.15mer.3mis.genome.out/drugv15mer.3mis.genome.txt",
-		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/Exp_New_Driver/drugv15mer.3mis.genome_Binormal.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/drugv15mer.3mis.genome_Binormal.txt",
-		"/media/yubin/Alpha/sRNAProject/referenceGenome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Control.15mer.fasta.3mis.out/Control15mer3mi_Transcriptlist.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV.15mer.fasta1.out/DrugV.15mer_GeneCountbyProbelist.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Control.15mer.fasta.3mis.out/Control15mer3mi_GeneCountbyProbelist.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV.15mer.fasta1.out/DrugV.15mer_Transcriptlist.txt"
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/DrugvControl/sam/txt/TH-1_ATCACG_L001_R1.txt"
 	],
 	"find":
 	{
@@ -722,6 +712,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"61n",
 			"mcm7",
 			"ENSG00000000003.14",
 			"ENSG00000166508.17",
@@ -848,8 +839,7 @@
 			"PP2BI",
 			"PP2B",
 			"pp2bi",
-			"600",
-			"PP2Bi"
+			"600"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -876,7 +866,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -902,10 +892,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 560.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -930,10 +920,10 @@
 							"syntax": "Packages/R-Box/syntax/R Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 304.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -958,56 +948,27 @@
 							"syntax": "Packages/R-Box/syntax/R Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 4351.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/17mer3misGenomeNewtransDrivergene_rightside2-19/Enrichment-DriverGene.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4712,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								947,
-								947
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 513.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "Pipeline.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1229,
+						"buffer_size": 3192,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1227,
-								1227
+								103,
+								103
 							]
 						],
 						"settings":
@@ -1022,7 +983,65 @@
 					"type": "text"
 				},
 				{
+					"buffer": 4,
+					"file": "MultiTask.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2308,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2202,
+								2202
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1197.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
 					"buffer": 5,
+					"file": "Mapping.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1259,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1221,
+								1221
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 456.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "CountingRead.py",
 					"semi_transient": false,
 					"settings":
@@ -1047,11 +1066,39 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
+					"file": "/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/test.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 501,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								471,
+								471
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "Generate-Xmer.py",
 					"semi_transient": false,
 					"settings":
@@ -1076,69 +1123,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "Counting_CountRead.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 998,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								731,
-								731
-							],
-							[
-								959,
-								959
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "Generate-unique-read.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 949,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								105,
-								105
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1154,8 +1139,8 @@
 						"selection":
 						[
 							[
-								227,
-								227
+								64,
+								64
 							]
 						],
 						"settings":
@@ -1164,10 +1149,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": -0.0,
-						"translation.y": 57.0,
+						"translation.y": 114.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1176,15 +1161,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2772,
+						"buffer_size": 2835,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2614,
-								2614
+								1712,
+								1712
 							]
 						],
 						"settings":
@@ -1192,11 +1177,11 @@
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 128.0,
-						"translation.y": 1064.0,
+						"translation.x": 0.0,
+						"translation.y": 741.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1224,7 +1209,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -1253,7 +1238,7 @@
 						"translation.y": 356.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -1279,10 +1264,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 718.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -1311,7 +1296,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -1340,35 +1325,7 @@
 						"translation.y": 399.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/test.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 150,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								142,
-								142
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
+					"stack_index": 13,
 					"type": "text"
 				}
 			]
@@ -1407,7 +1364,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 166.0
+		"height": 192.0
 	},
 	"output.find_results":
 	{

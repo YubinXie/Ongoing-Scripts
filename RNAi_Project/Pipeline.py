@@ -2,24 +2,27 @@ import os
 import subprocess
 
 os.chdir("/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/")
-Xmer="19"
+Xmer="15"
+Mismatch="3"
 CaseName="Drugv."
 AllName="All."
 
 CaseFastaName="drugvcase-rightside-enriched"
 AllFastaName="all-"
 
-CaseOutputFolder="Drugv."+ Xmer +"mer.3mis.genome.new.trans.out/"
-AllOutputFolder="All."+ Xmer +"mer.3mis.genome.new.trans.out/"
+CaseOutputFolder="Drugv."+ Xmer +"mer."+Mismatch+ "mis.genome.new.trans.out/"
+AllOutputFolder="All."+ Xmer +"mer."+Mismatch+"mis.genome.new.trans.out/"
 
-CaseOutputName=CaseName+ Xmer +"mer.3mis.genome.new.trans"
-AllOutputName=AllName+ Xmer +"mer.3mis.genome.new.trans"
+MultiHit="-LimitMultiHit-5"
+
+CaseOutputName=CaseName+ Xmer +"mer."+Mismatch+ "mis.genome.new.trans" + MultiHit
+AllOutputName=AllName+ Xmer +"mer."+Mismatch+ "mis.genome.new.trans"+ MultiHit
 
 def main():
-	GenerateFasta("18")
-	Mapping()
-	Formating()
-	Counting()
+	#GenerateFasta(Xmer)
+	#Mapping()
+	#Formating()
+	#Counting()
 	Binomoral()
 
 def GenerateFasta(X):
@@ -29,9 +32,9 @@ def GenerateFasta(X):
 	running(commend)
 
 def Mapping():
-	commend="tophat2 -N 3 --read-edit-dist 3 --num-thread 8 --max-multihits 10000 --report-secondary-alignments --GTF ../genome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf --transcriptome-index ../genome/gencode.v24.chr_patch_hapl_scaff.annotation --transcriptome-max-hits 10000 --transcriptome-only -o Drugv."+ str(Xmer) +"mer.3mis.genome.new.trans.out ../genome/GRCh38.genome " + CaseFastaName+str(Xmer)+"mer.fa"
+	commend="tophat2 -N " +Mismatch+" --read-edit-dist " +Mismatch+" --num-thread 8 --max-multihits 10000 --report-secondary-alignments --GTF ../genome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf --transcriptome-index ../genome/gencode.v24.chr_patch_hapl_scaff.annotation --transcriptome-max-hits 10000 --transcriptome-only -o " + CaseOutputFolder + " ../genome/GRCh38.genome " + CaseFastaName+str(Xmer)+"mer.fa"
 	running(commend)
-	commend="tophat2 -N 3 --read-edit-dist 3 --num-thread 8 --max-multihits 10000 --report-secondary-alignments --GTF ../genome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf --transcriptome-index ../genome/gencode.v24.chr_patch_hapl_scaff.annotation --transcriptome-max-hits 10000 --transcriptome-only -o All."+ str(Xmer) +"mer.3mis.genome.new.trans.out ../genome/GRCh38.genome "+ AllFastaName+str(Xmer)+"mer.fa"
+	commend="tophat2 -N " +Mismatch+" --read-edit-dist " +Mismatch+" --num-thread 8 --max-multihits 10000 --report-secondary-alignments --GTF ../genome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf --transcriptome-index ../genome/gencode.v24.chr_patch_hapl_scaff.annotation --transcriptome-max-hits 10000 --transcriptome-only -o " + AllOutputFolder + " ../genome/GRCh38.genome "+ AllFastaName+str(Xmer)+"mer.fa"
 	running(commend)
 
 def Formating():
