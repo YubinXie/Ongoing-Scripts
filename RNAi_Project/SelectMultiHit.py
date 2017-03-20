@@ -9,7 +9,7 @@ options, infile = parser.parse_args()
 
 InputFile=infile[0]
 LimitedMulti=infile[1]
-OutputFile=InputFile.rstrip(".sam")+"-LimitMultiHit-"+LimitedMulti+".sam"
+OutputFile=InputFile.replace(".sam","")+"-LimitMultiHit-"+LimitedMulti+".sam"
 
 ProbeDic={}
 TotalProbeDic={}

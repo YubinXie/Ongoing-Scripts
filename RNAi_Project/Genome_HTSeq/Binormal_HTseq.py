@@ -33,7 +33,7 @@ with open (ControlFile,"r") as openControlFile:
 	for line in openControlFile:
 		ElementList=line.strip("\n").split("\t")
 		ControlGene=ElementList[0]
-		ControlGeneCounts=ElementList[1]
+		ControlGeneCounts=int(float(ElementList[1]))
 		ControlDic[ControlGene]=ControlGeneCounts
 stop = timeit.default_timer()
 print stop - start, "seconds. Part 1 done"
@@ -45,7 +45,9 @@ with open (CaseFile,"r") as openCaseFile :
 		Gene=ElementList[0]
 		if "ENSG" not in Gene:
 			continue
-		CaseGeneCounts=int(ElementList[1])
+		CaseGeneCounts=int(float(ElementList[1]))
+		if CaseGeneCounts == 0:
+			continue
 		if Gene not in ControlDic:
 			ControlGeneCounts=0
 		else:
@@ -71,7 +73,9 @@ with open (CaseFile,"r") as openCaseFile, open (OutputFile1,"w+") as openOutputF
 		Gene=ElementList[0]
 		if "ENSG" not in Gene:
 			continue
-		CaseGeneCounts=int(ElementList[1])
+		CaseGeneCounts=int(float(ElementList[1]))
+		if CaseGeneCounts == 0:
+			continue
 		if Gene not in ControlDic:
 			ControlGeneCounts=0
 		else:

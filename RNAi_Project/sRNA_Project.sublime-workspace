@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"M",
+				"MultiHit"
+			],
+			[
+				"Mu",
+				"MultiHitNumber"
+			],
+			[
+				"open",
+				"OpenInputFile"
+			],
+			[
 				"C",
 				"ColofResultQvalue"
 			],
@@ -46,10 +58,6 @@
 			[
 				"in",
 				"InputFile1"
-			],
-			[
-				"open",
-				"openInputFile1"
 			],
 			[
 				"In",
@@ -350,7 +358,7 @@
 			"file": "Pipeline.py",
 			"settings":
 			{
-				"buffer_size": 3192,
+				"buffer_size": 3245,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -360,14 +368,6 @@
 			"settings":
 			{
 				"buffer_size": 2308,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Mapping.py",
-			"settings":
-			{
-				"buffer_size": 1259,
 				"line_ending": "Unix"
 			}
 		},
@@ -393,6 +393,15 @@
 			"settings":
 			{
 				"buffer_size": 841,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "SelectMultiHit.py",
+			"settings":
+			{
+				"buffer_size": 1005,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -567,6 +576,47 @@
 	},
 	"file_history":
 	[
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.15mer.3mis.genome.new.trans.out/Drugv.15mer.3mis.genome.new.tran-LimitMultiHit-5.txt",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.15mer.3mis.genome.new.trans.out/Drugv.15mer.3mis.genome.new.tran-LimitMultiHit-5-a5.txt",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/15mer3misGenomeNewtransDrivergene_rightside3-6-multihit-5-a5/Enrichment-DriverGene-Feb21-V5.py",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/15mer3misGenomeNewtransDrivergene_rightside3-6-multihit-5-a3/Enrichment-DriverGene-Feb21-V5.py",
+		"/home/yubin/Dropbox/Share/Yubins Project/Multi-scale_paper/MultiscalePart/Multiscale-Methods/Iterration_Normal_Events_LTP.py",
+		"/home/yubin/Dropbox/Share/Yubins Project/Multi-scale_paper/MultiscalePart/Multiscale-Methods/ProtocolData/I=0EH-0.475Last=250_NormalIteration_EVENT-0306.txt",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.19mer.3mis.genome.new.trans.out/Drugv.19mer.3mis.genome.new.trans.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.15mer.3mis.genome.new.trans.out/drugv.15mer.3mis.genome.new.tran-LimitMultiHit-5.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.15mer.3mis.genome.new.trans.out/drugv.15mer.3mis.genome.new.tran-LimitMultiHit-3.sam",
+		"/home/yubin/Dropbox/Model/BiochemicalModel_Jan2017-IterationC1P6-LTP.cps",
+		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/15mer3misGenomeNewtransDrivergene_rightside3-6-multihit-5-a1/Enrichment-DriverGene-Feb21-V5.py",
+		"/home/yubin/Dropbox/Model/Normal-Initial-C1P6-data.txt",
+		"/home/yubin/Dropbox/Model/Normal-Initial-C1P6-data-Ca.txt",
+		"/home/yubin/Dropbox/Model/Iteration-C1P6",
+		"/home/yubin/tools/COPASI-4.16.104-Linux-64bit/bin/CopasiUI",
+		"/home/yubin/Dropbox/Share/Yubins Project/Multi-scale_paper/MultiscalePart/Multiscale-Methods/Iterration_Normal_Events.py",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.15mer.3mis.genome.new.trans.out/Drugv.15mer.3mis.genome.new.tran-LimitMultiHit-5-a10.txt",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.15mer.3mis.genome.new.trans.out/Drugv.15mer.3mis.genome.new.tran-LimitMultiHit-5-a3.txt",
+		"/home/yubin/tools/COPASI-4.19.140-Linux-64bit/bin/CopasiUI",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.15mer.3mis.genome.new.trans.out/drugv.15mer.3mis.genome.new.tran-LimitMultiHit-1.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.15mer.3mis.genome.new.trans.out/drugv.15mer.3mis.genome.new.tran-LimitMultiHit-2.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.15mer.3mis.genome.new.trans.out/drugv.15mer.3mis.genome.new.trans.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv-right-19mer-3mis-trans-out/drugv.19mer.3mis.right.trans.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.18mer.3mis.genome.new.trans.out/Drugv.18mer.3mis.genome.new.trans.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/yubin15mer3mis.sort.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/test-multihit2.txt",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/test-multihit3.txt",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/MultiHitFlag.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/MultiHitFlag-1.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/test-multihit-1.txt",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/MultiHitFlag-2.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/test-multihit-2.txt",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/yubinrightDrugV.3mis.genome.txt",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv.19mer.3mis.genome.new.trans.out/Drugv.19mer.3mis.genome.new.trans.txt",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/Drugv-right-19mer-3mis-trans-out/drugv.19mer.3mis.right.tran_Transcriptlist.txt",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/MultiHitFlag4.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/MultiHitFlag3.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/MultiHitFlag3 (copy).sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/MultiHitFlag2.sam",
+		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/test/test-multihit1.txt",
+		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/Mapping.py",
 		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/srna/genome/test/DrugV.15mer.fasta.out/align_summary.txt",
 		"/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/align_summary.txt",
 		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/19mer3misGenomeNewtransDrivergene_rightside2-21/Enrichment-DriverGene-Feb21-V5.py",
@@ -653,48 +703,7 @@
 		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/MergedRead/counts/all-count/all-counts.txt",
 		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/MergedRead/counts/drugvcase-counts-counts.txt",
 		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Yuwen/MergedRead/drugvcase-counts.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/drugvcase-rightside-enriched12mer.fa",
-		"/home/yubin/Dropbox/Linux/Files/RNAi/Output/drugvcase-rightside-enriched12mer.fa",
-		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/eXP_MINE_Zifeng/yubinrightDrugV.3mis.genome_Binormal.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/align_summary.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/logs/segment_juncs.log",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/logs/reports.log",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/logs/tophat.log",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/logs/run.log",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubinright.drugV.15mer.3mis.genome.out/yubin15mer3mis.sort.sam",
-		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_Drivergene_Twoside2-1/Enrichment_DirverGene.py",
-		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_Drivergene_rightside2-1/yubinrightDrugV.3mis.genome_Binormal.txt",
-		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/eXP_MINE_Zifeng/drugVMEFgenelist_genome.xlsx",
-		"/home/yubin/Dropbox/Linux/Files/RNAi/>test",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/11mer.fa",
-		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/New_Drivergene_2-1/Enrichment_DirverGene.py",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/Repeat_Zifeng/DrugV.15mer.fasta",
-		"/media/yubin/Alpha/sRNAProject/drug_resistance_from_Yuwen/ref.fasta",
-		"/home/yubin/Dropbox/Linux/Files/RNAi/Output/drugvcase-rightside-enriched19mer.fa",
-		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/Enrichment_DirverGene.py",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/drugvcase-twoside-enriched15mer.fa",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/yubin.drugV.15mer.3mis.genome.out/yubinDrugV.3mis.genome_Binormal.txt",
-		"/home/yubin/Dropbox/Linux/Files/RNAi/Output/drugvcase-rightside-enriched19mer12mer.fa",
-		"/home/yubin/Dropbox/Linux/Files/RNAi/Output/drugvcase-twoside-enriched19mer.fa",
-		"/home/yubin/Dropbox/Linux/Files/RNAi/drugvcase-wholereads.txt",
-		"/home/yubin/Dropbox/Linux/Files/RNAi/drugvcase-twosidesignificantreads.txt",
-		"/home/yubin/Dropbox/Linux/Files/RNAi/drugvcase-rightsidesignificantreads.txt",
-		"/home/yubin/Dropbox/Linux/Files/RNAi/drugvcase-wholereads.fa",
-		"/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/Exp_New_Driver/Enrichment_DirverGene.py",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/Reads/counts/control-19mer-counts.txt",
-		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/QualityFilter.py",
-		"/home/yubin/Dropbox/Linux/Files/RNAi/drugvcase-counts-counts.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/scripts/MultiTask.py",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/Read/counts/drugvcontrol_read1-counts.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/Read/counts/drugvcontrol_readBGI-counts.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/Read/counts/drugvcontrol__allread-counts.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/Reads/drugvcase_allreads.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/BGIDrugvCase/sam/txt/FCC86F0ANXX_L6_CWHSE15100013_1.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/BGIDrugvCase/sam/txt/FCC7N9BANXX_L6_CWHSE15100027_1.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/BGIDrugvCase/sam/txt/FCC7N9BANXX_L6_CWHSE15100023_1.txt",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/Reads/drugvcontrol_read1.txt",
-		"/home/yubin/Dropbox/Linux/scripts/RNAi_Project/Extraction.py",
-		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/DrugvControl/sam/txt/TH-1_ATCACG_L001_R1.txt"
+		"/media/yubin/Alpha/sRNAProject/SRNA_Yubin/drugvcase-rightside-enriched12mer.fa"
 	],
 	"find":
 	{
@@ -712,6 +721,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"XS:A:+\tXS:A:+",
+			"NH:i:258",
+			"@",
+			"\t2",
+			"\t1",
 			"61n",
 			"mcm7",
 			"ENSG00000000003.14",
@@ -834,12 +848,7 @@
 			"amapa",
 			"amapar",
 			"PP2B",
-			"leak",
-			" leak",
-			"PP2BI",
-			"PP2B",
-			"pp2bi",
-			"600"
+			"leak"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -866,7 +875,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 8,
 			"sheets":
 			[
 				{
@@ -895,7 +904,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -923,7 +932,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -951,7 +960,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -960,26 +969,27 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3192,
+						"buffer_size": 3245,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								103,
-								103
+								399,
+								399
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1005,43 +1015,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1197.0,
+						"translation.y": 412.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "Mapping.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1259,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1221,
-								1221
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 456.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
 					"file": "CountingRead.py",
 					"semi_transient": false,
 					"settings":
@@ -1066,11 +1047,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "/home/yubin/Dropbox/HeLabProject/RNAi-Project/EXP/test.py",
 					"semi_transient": false,
 					"settings":
@@ -1094,11 +1075,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"file": "Generate-Xmer.py",
 					"semi_transient": false,
 					"settings":
@@ -1110,8 +1091,8 @@
 						"selection":
 						[
 							[
-								440,
-								440
+								19,
+								19
 							]
 						],
 						"settings":
@@ -1123,7 +1104,36 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "SelectMultiHit.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1005,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								765,
+								765
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1139,8 +1149,8 @@
 						"selection":
 						[
 							[
-								64,
-								64
+								2160,
+								2160
 							]
 						],
 						"settings":
@@ -1149,10 +1159,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": -0.0,
-						"translation.y": 114.0,
+						"translation.y": 798.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1178,10 +1188,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 741.0,
+						"translation.y": 784.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -1209,7 +1219,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -1235,10 +1245,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 356.0,
+						"translation.y": 869.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1254,8 +1264,8 @@
 						"selection":
 						[
 							[
-								2527,
-								2527
+								895,
+								895
 							]
 						],
 						"settings":
@@ -1264,10 +1274,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 228.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1283,8 +1293,8 @@
 						"selection":
 						[
 							[
-								434,
-								434
+								965,
+								965
 							]
 						],
 						"settings":
@@ -1293,10 +1303,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 228.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1325,7 +1335,7 @@
 						"translation.y": 399.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 14,
 					"type": "text"
 				}
 			]
