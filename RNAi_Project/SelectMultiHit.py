@@ -3,7 +3,7 @@ import timeit;
 import re
 start = timeit.default_timer()
 
-usage="python xx.py XXX.sam"
+usage="python xx.py XXX.sam Multi-Number"
 parser = optparse.OptionParser(usage=usage)
 options, infile = parser.parse_args()
 

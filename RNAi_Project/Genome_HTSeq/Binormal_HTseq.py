@@ -13,7 +13,7 @@ options, infile = parser.parse_args()
 
 ControlFile = infile[0]
 CaseFile = infile[1]
-OutputFile1=CaseFile.strip(".txt").split("/")[-1] + "_Binormal.txt" 
+OutputFile1="Outcome/"+CaseFile.rstrip(".txt").split("/")[-1] + "_Binormal.txt" 
 Reference=infile[2]
 Pvalue=float(infile[3])
 

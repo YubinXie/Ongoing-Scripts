@@ -2,7 +2,7 @@ import os
 import subprocess
 
 os.chdir("/media/yubin/C2F69FFCF69FEF43/sRNAProject/SRNA_Yubin/")
-Xmer="15"
+Xmer="13"
 Mismatch="3"
 CaseName="Drugv."
 AllName="All."
@@ -13,22 +13,28 @@ AllFastaName="all-"
 CaseOutputFolder="Drugv."+ Xmer +"mer."+Mismatch+ "mis.genome.new.trans.out/"
 AllOutputFolder="All."+ Xmer +"mer."+Mismatch+"mis.genome.new.trans.out/"
 
-MultiHit="-LimitMultiHit-5"
-
-CaseOutputName=CaseName+ Xmer +"mer."+Mismatch+ "mis.genome.new.trans" + MultiHit
-AllOutputName=AllName+ Xmer +"mer."+Mismatch+ "mis.genome.new.trans"+ MultiHit
+SamFileName=""
+SamFileName="-weight"
+MultiHit="2"
+#MultiHit=""
+#if MultiHit != "":
+#	SamFileName="-LimitMultiHit-" + MultiHit
+CaseOutputName=CaseName+ Xmer +"mer."+Mismatch+ "mis.genome.new.trans" +SamFileName
+AllOutputName=AllName+ Xmer +"mer."+Mismatch+ "mis.genome.new.trans"+SamFileName
 
 def main():
 	#GenerateFasta(Xmer)
 	#Mapping()
 	#Formating()
+	#MultiHitting()
+	#WeightCounting()
 	#Counting()
 	Binomoral()
 
 def GenerateFasta(X):
-	commend="python ~/Dropbox/Linux/scripts/RNAi_Project/Generate-Xmer.py drugvcase-rightside-enriched19mer.fa " + X
+	commend="python ~/Dropbox/Linux/scripts/RNAi_Project/Generate-Xmer.py X-merData/drugvcase-rightside-enriched19mer.fa " + X
 	running(commend)
-	commend="python ~/Dropbox/Linux/scripts/RNAi_Project/Generate-Xmer.py all-19mer.fa " + X
+	commend="python ~/Dropbox/Linux/scripts/RNAi_Project/Generate-Xmer.py X-merData/ll-19mer.fa " + X
 	running(commend)
 
 def Mapping():
@@ -47,10 +53,23 @@ def Formating():
 	commend="samtools sort -o " + AllOutputFolder + AllOutputName +".sam "+ AllOutputFolder+ "accepted_hits.sort.bam"
 	running(commend)
 
+def WeightCounting():
+	commend="python ~/tools/HTSeq-0.6.1/HTSeq/scripts/count-weight.py -s no -i gene_id -q -a 0 " + CaseOutputFolder + CaseOutputName +".sam " + "../genome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf > "  + CaseOutputFolder + CaseOutputName +"-weight.txt"
+	running(commend)
+	#commend="python ~/tools/HTSeq-0.6.1/HTSeq/scripts/count-weight.py -s no -i gene_id -q -a 0 " + AllOutputFolder + AllOutputName +".sam " + "../genome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf > "  + AllOutputFolder + AllOutputName +"-weight.txt"
+	#running(commend)
+
 def Counting():
+
 	commend="htseq-count -s no -i gene_id -q " + CaseOutputFolder + CaseOutputName +".sam ../genome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf > "+ CaseOutputFolder + CaseOutputName + ".txt"
 	running(commend)
 	commend="htseq-count -s no -i gene_id -q " + AllOutputFolder + AllOutputName +".sam ../genome/gencode.v24.chr_patch_hapl_scaff.annotation.gtf > "+ AllOutputFolder + AllOutputName + ".txt"
+	running(commend)
+
+def MultiHitting():
+	commend="python ~/Dropbox/Linux/scripts/RNAi_Project/SelectMultiHit.py " + CaseOutputFolder + CaseOutputName +".sam " + MultiHit
+	running(commend)
+	commend="python ~/Dropbox/Linux/scripts/RNAi_Project/SelectMultiHit.py " + AllOutputFolder + AllOutputName +".sam " + MultiHit
 	running(commend)
 
 def Binomoral():

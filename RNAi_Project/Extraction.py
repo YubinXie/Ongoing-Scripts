@@ -17,7 +17,7 @@ with open(infile[0]) as inputfile:
 		if len(array)<=9:
 			continue
 		InputLineNumber+=1
-		if array[5]=="125M":
+		if array[5]=="100M":   #125M for BGI data#
 			NoIndelLineNumber+=1
 			Reads=array[9]
 			Target=Reads[24:43]
@@ -25,5 +25,5 @@ with open(infile[0]) as inputfile:
 				OutputLineNumber+=1
 				OutputContent=Target+"\n"
 				OutputFile.write(OutputContent)
-print infile[0], InputLineNumber, NoIndelLineNumber, OutputLineNumber
+print infile[0], "InputLineNumber:",InputLineNumber, "NoIndelLineNumber:",NoIndelLineNumber,"OutputLineNumber:", OutputLineNumber,"OutputLineNumber/InputLineNumber:",float(OutputLineNumber)/float(InputLineNumber)
 OutputFile.close()

@@ -37,7 +37,7 @@ def Extraction():
 	FilePattern=".sam"
 	OutputFolder="txt"
 	OutputType=".txt"
-	CommendLine1="python /media/yubin/Alpha/sRNAProject/SRNA_Yubin/DrugV/scripts/Extraction.py "
+	CommendLine1="python /home/yubin/Dropbox/Linux/scripts/RNAi_Project/Extraction.py "
 	CommendLine2=" "
 
 def Counting():
