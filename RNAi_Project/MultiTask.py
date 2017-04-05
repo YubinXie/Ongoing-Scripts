@@ -17,8 +17,8 @@ OutputName=""
 def main():
 ####Choose One#######
 	#Mapping()
-	Extraction()
-	#Counting()
+	#Extraction()
+	Counting()
 #####################
 
 	MainPart()

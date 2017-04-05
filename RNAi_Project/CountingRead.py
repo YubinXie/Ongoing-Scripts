@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+import subprocess
 import sys, optparse
 import timeit;
 start = timeit.default_timer()
@@ -11,6 +11,7 @@ InputReadsNumber=0
 ReadsNumber=0
 ReadsList=[]
 ReadsDic={}
+TempFile="TempFile.txt"
 
 with open(infile[0]) as InputFile:
 	for Line in InputFile:
@@ -21,14 +22,20 @@ with open(infile[0]) as InputFile:
 		else:
 			ReadsDic[Line]+=1
 
-with open (infile[1], "w+") as OutputFile:
+with open (TempFile, "w+") as OpenTempFile:
 	OutputLine=0
 	for key, value in ReadsDic.items():
 		if value>=2:
-			OutputFile.writelines('%s\t%s\n' % (key,value))
+			OpenTempFile.writelines('%s\t%s\n' % (key,value))
 			OutputLine+=1
 		ReadsNumber = ReadsNumber + value
 
+commend="sort -nk2 -r " + TempFile + " > " + infile[1]
+process=subprocess.Popen(commend,shell=True,stdout=subprocess.PIPE)
+process.wait()
+commend="rm " + TempFile
+process=subprocess.Popen(commend,shell=True,stdout=subprocess.PIPE)
+
 stop = timeit.default_timer()
-print "Done; \nInputfile line number:", InputReadsNumber, "\nCount reads number in output file: ", ReadsNumber,"Total Reads",len(ReadsDic.items()) ,"\nOutputfile line number (reads>=2)", OutputLine
+print "Done; \nInputfile line number:", InputReadsNumber, "\nCount reads number in output file: ", ReadsNumber,"Total Unique Reads",len(ReadsDic.items()) ,"\nOutputfile line number (reads>=2):", OutputLine
 print "Time used: ", stop - start,    	

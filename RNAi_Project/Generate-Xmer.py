@@ -9,7 +9,7 @@ parser = optparse.OptionParser(usage=usage)
 options, infile = parser.parse_args()
 
 Xmer=int(infile[1])
-OutputFileName=infile[0].rstrip("19mer.fa") + str(Xmer)+"mer.fa"
+OutputFileName=infile[0].replace("19",str(Xmer))
 ReadsNumber=0
 
 with open(infile[0]) as InputFile, open (OutputFileName, "w+") as OutputFile:

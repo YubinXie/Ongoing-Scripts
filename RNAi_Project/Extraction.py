@@ -17,7 +17,8 @@ with open(infile[0]) as inputfile:
 		if len(array)<=9:
 			continue
 		InputLineNumber+=1
-		if array[5]=="100M":   #125M for BGI data#
+		#print array[5]
+		if array[5]=="125M":   #125M for BGI data#
 			NoIndelLineNumber+=1
 			Reads=array[9]
 			Target=Reads[24:43]

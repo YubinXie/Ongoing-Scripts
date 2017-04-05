@@ -13,17 +13,17 @@ usage="python xx.py ControlFile CaseFile ControlReadsTotalNumber CaseReadsTotalN
 parser = optparse.OptionParser(usage=usage)
 options, infile = parser.parse_args()
 
-TotalControlLineNumber=int(infile[2])
-TotalCaseLineNumber= int(infile[3])
+TotalControlLineNumber=0
+TotalCaseLineNumber=0
 TotalCaseUReadNumber=0
 WholeReadsOutput=infile[1].strip("-counts.txt") + "-wholereads.txt"
-Significant_twosideReadsOutput=infile[1].strip("-counts.txt") + "-twosidesignificantreads.txt"
-Significant_rightsideReadsOutput=infile[1].strip("-counts.txt") + "-rightsidesignificantreads.txt"
+Significant_twosideReadsOutput=infile[1].strip("19mer-counts.txt") + "-twosidesignificantreads-19mer.txt"
+Significant_rightsideReadsOutput=infile[1].strip("19mer-counts.txt") + "-rightsidesignificantreads-19mer.txt"
 
 
 WholeReadsFastaOutput=infile[1].strip("-counts.txt") + "-wholereads.fa"
-Significant_twosideReadsFastaOutput=infile[1].strip("-counts.txt") + "-twosidesignificantreads.fa"
-Significant_rightsideReadsFastaOutput=infile[1].strip("-counts.txt") + "-rightsidesignificantreads.fa"
+Significant_twosideReadsFastaOutput=infile[1].strip("19mer-counts.txt") + "-twosidesignificantreads-19mer.fa"
+Significant_rightsideReadsFastaOutput=infile[1].strip("19mer-counts.txt") + "-rightsidesignificantreads-19mer.fa"
 
 PadjustThreshold=0.05
 FoldChangeThreshold=1
@@ -36,10 +36,13 @@ with open(infile[0],"r") as ControlFile:
 	for Line in ControlFile:
 		ElementList = Line.strip("\n").split("\t")
 		ControlDic[ElementList[0]] = int(ElementList[1])
+		TotalControlLineNumber=TotalControlLineNumber+int(ElementList[1])
 
 with open(infile[1],"r") as CaseFile:
 	for Line in CaseFile:
+		ElementList = Line.strip("\n").split("\t")
 		TotalCaseUReadNumber+=1
+		TotalCaseLineNumber=TotalCaseLineNumber+int(ElementList[1])
 		
 with open(infile[1],"r") as CaseFile:
 	for Line in CaseFile:
@@ -96,6 +99,6 @@ with open(infile[1],"r") as CaseFile, open (WholeReadsOutput,"w+") as OutputFile
 		OutputLineNumbrt+=1
 
 
-print "twosideSignificantReadsNumber:",twosideSignificantReadsNumber,"\nrightsideSignificantReadsNumber:",rightsideSignificantReadsNumber,"\nTotalCaseLineNumber: ",TotalCaseLineNumber, "\ntwosideSignificant rate:",float(twosideSignificantReadsNumber)/float(TotalCaseLineNumber), "\nrightsideSignificant rate:",float(rightsideSignificantReadsNumber)/float(TotalCaseLineNumber)
+print "twosideSignificantReadsNumber:",twosideSignificantReadsNumber,"\nrightsideSignificantReadsNumber:",rightsideSignificantReadsNumber,"\nTotalCaseLineNumber: ",TotalCaseUReadNumber,"Total Case Reads:",TotalCaseLineNumber, "\ntwosideSignificant rate:",float(twosideSignificantReadsNumber)/float(TotalCaseLineNumber), "\nrightsideSignificant rate:",float(rightsideSignificantReadsNumber)/float(TotalCaseLineNumber)
 stop = timeit.default_timer()
 print "Time used: ", stop - start, "seconds"
