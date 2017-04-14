@@ -26,5 +26,5 @@ with open(infile[0]) as inputfile:
 				OutputLineNumber+=1
 				OutputContent=Target+"\n"
 				OutputFile.write(OutputContent)
-print infile[0], "InputLineNumber:",InputLineNumber, "NoIndelLineNumber:",NoIndelLineNumber,"OutputLineNumber:", OutputLineNumber,"OutputLineNumber/InputLineNumber:",float(OutputLineNumber)/float(InputLineNumber)
+print infile[0], "InputLineNumber:",InputLineNumber, "NoIndelLineNumber:",NoIndelLineNumber,"OutputLineNumber (no N):", OutputLineNumber,"OutputLineNumber/InputLineNumber:",float(OutputLineNumber)/float(InputLineNumber)
 OutputFile.close()

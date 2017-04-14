@@ -5,7 +5,7 @@ import timeit;
 start = timeit.default_timer()
 import subprocess
 
-usage="python xx.py InputFile OutputFile"
+usage="python xx.py InputFile OutputFastaFile"
 parser = optparse.OptionParser(usage=usage)
 options, infile = parser.parse_args()
 

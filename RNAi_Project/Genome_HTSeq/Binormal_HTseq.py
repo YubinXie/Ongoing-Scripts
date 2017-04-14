@@ -43,7 +43,7 @@ with open (CaseFile,"r") as openCaseFile :
 	for line in openCaseFile:
 		ElementList=line.strip("\n").split("\t")
 		Gene=ElementList[0]
-		if "ENSG" not in Gene:
+		if "ENS" not in Gene:
 			continue
 		CaseGeneCounts=int(float(ElementList[1]))
 		if CaseGeneCounts == 0:
@@ -71,7 +71,7 @@ with open (CaseFile,"r") as openCaseFile, open (OutputFile1,"w+") as openOutputF
 	for line in openCaseFile:
 		ElementList=line.strip("\n").split("\t")
 		Gene=ElementList[0]
-		if "ENSG" not in Gene:
+		if "ENS" not in Gene:
 			continue
 		CaseGeneCounts=int(float(ElementList[1]))
 		if CaseGeneCounts == 0:
